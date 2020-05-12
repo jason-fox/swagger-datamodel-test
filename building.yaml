@@ -46,7 +46,7 @@ paths:
     get:
       responses:
         200:
-          description: "Linked-data"
+          description: "NGSI-LD Linked-data Format"
           content:
             application/ld+json:
               examples: 
@@ -59,7 +59,7 @@ paths:
     get:
       responses:
         200:
-          description: "Invalid input"
+          description: "NGSI-v2 Format"
           content:
             application/json:
               examples: 
