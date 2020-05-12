@@ -51,92 +51,9 @@ paths:
             application/ld+json:
               examples: 
                 foo:
-                  summary: A foo example
+                  summary: Linked Data example
                   value: 
-
-                    id: 'urn:ngsi-ld:Building:building-a85e3da145c1'
-                    type: Building
-                    modifiedAt: '2016-08-08T10:18:16Z'
-                    createdAt: '2016-08-08T10:18:16Z'
-                    category:
-                      type: Property
-                      value:
-                        - office
-                    floorsBelowGround:
-                      type: Property
-                      value: 0
-                    description:
-                      type: Property
-                      value: Office block
-                    floorsAboveGround:
-                      type: Property
-                      value: 7
-                    occupier:
-                      type: Relationship
-                      object:
-                        - 'urn:ngsi-ld:Person:9830f692-7677-11e6-838b-4f9fb3dc5a4f'
-                    mapUrl:
-                      type: Property
-                      value: 'http://www.example.com'
-                    source:
-                      type: Property
-                      value: 'http://www.example.com'
-                    location:
-                      type: GeoProperty
-                      value:
-                        type: Polygon
-                        coordinates:
-                          - - - 100
-                              - 0
-                            - - 101
-                              - 0
-                            - - 101
-                              - 1
-                            - - 100
-                              - 1
-                            - - 100
-                              - 0
-                    address:
-                      type: Property
-                      value:
-                        addressLocality: London
-                        postalCode: EC4N 8AF
-                        streetAddress: 25 Walbrook
-                        type: PostalAddress
-                    owner:
-                      type: Relationship
-                      object:
-                        - 'urn:ngsi-ld:Person:cdfd9cb8-ae2b-47cb-a43a-b9767ffd5c84'
-                        - 'urn:ngsi-ld:Person:1be9cd61-ef59-421f-a326-4b6c84411ad4'
-                    openingHours:
-                      type: Property
-                      value:
-                        - 'Mo-Fr 10:00-19:00'
-                        - 'Sa 10:00-22:00'
-                        - 'Su 10:00-21:00'
-                    dataProvider:
-                      type: Property
-                      value: OperatorA
-                    containedInPlace:
-                      type: Property
-                      value:
-                        type: Polygon
-                        coordinates:
-                          - - - 100
-                              - 0
-                            - - 101
-                              - 0
-                            - - 101
-                              - 1
-                            - - 100
-                              - 1
-                            - - 100
-                              - 0
-                    '@context':
-                      - 'https://schema.lab.fiware.org/ld/context'
-                      - 'https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld'
-
-
+                    - $ref : "https://raw.githubusercontent.com/smart-data-models/dataModel.Building/master/Building/example-normalized-ld.jsonld"
 
   /nsgi-v2:
     get:
@@ -149,141 +66,13 @@ paths:
                 normalized:
                   summary: Normalized example
                   value: 
-                    id: building-a85e3da145c1
-                    type: Building
-                    category:
-                      value:
-                       - office
-                    floorsBelowGround:
-                      value: 0
-                    description:
-                      value: Office block
-                    floorsAboveGround:
-                      value: 7
-                    occupier:
-                      type: Relationship
-                      value:
-                        - 9830f692-7677-11e6-838b-4f9fb3dc5a4f
-                    mapUrl:
-                      type: URL
-                      value: 'http://www.example.com'
-                    dateCreated:
-                      type: DateTime
-                      value: '2016-08-08T10:18:16Z'
-                    source:
-                      value: 'http://www.example.com'
-                    location:
-                      type: 'geo:json'
-                      value:
-                        type: Polygon
-                        coordinates:
-                         - - - 100
-                             - 0
-                           - - 101
-                             - 0
-                           - - 101
-                             - 1
-                           - - 100
-                             - 1
-                           - - 100
-                             - 0
-                        address:
-                          type: PostalAddress
-                          value:
-                             addressLocality: London
-                             postalCode: EC4N 8AF
-                             streetAddress: 25 Walbrook
-                        owner:
-                          type: Relationship
-                          value:
-                             - cdfd9cb8-ae2b-47cb-a43a-b9767ffd5c84
-                             - 1be9cd61-ef59-421f-a326-4b6c84411ad4
-                        openingHours:
-                          value:
-                             - 'Mo-Fr 10:00-19:00'
-                             - 'Sa 10:00-22:00'
-                             - 'Su 10:00-21:00'
-                        dataProvider:
-                          value: OperatorA
-                        dateModified:
-                           type: DateTime
-                           value: '2016-08-08T10:18:16Z'
-                        containedInPlace:
-                           value:
-                             type: Polygon
-                             coordinates:
-                               - - - 100
-                                   - 0
-                                 - - 101
-                                   - 0
-                                 - - 101
-                                   - 1
-                                 - - 100
-                                   - 1
-                                 - - 100
-                                   - 0
-                         
-                  
-                  
-                  
+                    - $ref: "https://raw.githubusercontent.com/smart-data-models/dataModel.Building/master/Building/example-normalized.json"
+                   
                 keyvalues:
                   summary: Key-Values Pairs
                   value: 
-                   id: building-a85e3da145c1
-                   type: Building
-                   dateCreated: '2016-08-08T10:18:16Z'
-                   dateModified: '2016-08-08T10:18:16Z'
-                   source: 'http://www.example.com'
-                   dataProvider: OperatorA
-                   category:
-                     - office
-                   containedInPlace:
-                     type: Polygon
-                     coordinates:
-                       - - - 100
-                           - 0
-                         - - 101
-                           - 0
-                         - - 101
-                           - 1
-                         - - 100
-                           - 1
-                         - - 100
-                           - 0
-                   location:
-                     type: Polygon
-                     coordinates:
-                       - - - 100
-                           - 0
-                         - - 101
-                           - 0
-                         - - 101
-                           - 1
-                         - - 100
-                           - 1
-                         - - 100
-                           - 0
-                   address:
-                     addressLocality: London
-                     postalCode: EC4N 8AF
-                     streetAddress: 25 Walbrook
-                   owner:
-                     - cdfd9cb8-ae2b-47cb-a43a-b9767ffd5c84
-                     - 1be9cd61-ef59-421f-a326-4b6c84411ad4
-                   occupier:
-                     - 9830f692-7677-11e6-838b-4f9fb3dc5a4f
-                   floorsAboveGround: 7
-                   floorsBelowGround: 0
-                   description: Office block
-                   mapUrl: 'http://www.example.com'
-                   openingHours:
-                     - 'Mo-Fr 10:00-19:00'
-                     - 'Sa 10:00-22:00'
-                     - 'Su 10:00-21:00'
-                 
-
-
-    
+                    - $ref: "https://raw.githubusercontent.com/smart-data-models/dataModel.Building/master/Building/example.json"
+                       
 components:
   schemas:
     Categories:
@@ -354,14 +143,16 @@ components:
         - service
         - ruins
         - water_tower
-        
-        
 
-      
     Building:
       required:
         - address
         - category
+      
+      type: "object"
+      allOf:
+        - $ref: "https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/Common"
+        - $ref: "https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/Movable"
         
       description: >
         ## Description
@@ -391,13 +182,6 @@ components:
         For a full description of the following attributes refer to GSMA
         [IoT Big Data Harmonised Data Model](https://github.com/GSMADeveloper/NGSI-LD-Entities)
       
-      
-      type: "object"
-      allOf:
-        - $ref: "https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/Common"
-        - $ref: "https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/Movable"
-        
-        
       properties:
       
         address:
@@ -409,8 +193,7 @@ components:
           enum: *CATEGORIES
           description: >
             The categories that this building belongs to
-      
-    
+
         containedInPlace :
           x-attr-type: "Relationship"
           x-model: "https://schema.org/URL"
@@ -419,7 +202,6 @@ components:
           description: >
             The URL this building resides within  
        
-            
         dataProvider:
           x-attr-type: "Property"
           x-model: "https://schema.org/URL"
@@ -440,7 +222,6 @@ components:
           format: "int32"
           description: >
             Number of floors above ground within the building
-
 
         floorsBelowGround:
           x-attr-type: "Property"
@@ -490,23 +271,9 @@ components:
           description: >
             The URL holding a map of the building
             
-            
-        source2 :
-          x-attr-type: "Property"
-          x-model: ["https://schema.org/Text", "https://schema.org/URL"]
-          type: "string"
-          description: >
-
-
-
-            
         source:
           x-attr-type: "Property"
           x-model: ["https://schema.org/Text", "https://schema.org/URL"]
           type: "string"
           description: >
             A sequence of characters giving the source of the entity data.
-
-
-
-          
