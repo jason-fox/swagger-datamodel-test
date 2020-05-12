@@ -20,18 +20,19 @@ info:
         within a building.
         
         
-  x-description-es: >
+  x-description
+    es: >
     
-    # Construyendo modelos de datos
-    
-    Este repositorio se archivará (enero de 2020) y los trabajos posteriores se llevarán a cabo
-    en los repositorios [Modelos de datos inteligentes] (https://github.com/smart-data-models).
-    Más preguntas sobre migración. alberto.abella@fiware.org
-    
-    Esta carpeta contiene varios modelos de datos relacionados con el modelado de
-    Edificio y su gestión basada en
-    [GSMA] (https://www.gsma.com/iot/iot-big-data/) actividades. En comparación con GSMA
-    modelos, introdujimos algunos cambios y eliminamos el modelo `BuildingType`.
+      # Construyendo modelos de datos
+
+      Este repositorio se archivará (enero de 2020) y los trabajos posteriores se llevarán a cabo
+      en los repositorios [Modelos de datos inteligentes] (https://github.com/smart-data-models).
+      Más preguntas sobre migración. alberto.abella@fiware.org
+
+      Esta carpeta contiene varios modelos de datos relacionados con el modelado de
+      Edificio y su gestión basada en
+      [GSMA] (https://www.gsma.com/iot/iot-big-data/) actividades. En comparación con GSMA
+      modelos, introdujimos algunos cambios y eliminamos el modelo `BuildingType`.
     
   version: "1.0.0"
   title: "Building"
@@ -77,7 +78,8 @@ components:
   schemas:
     Categories:
       type: string
-      x-uri-prefix: "https://uri.fiware.org/ns/data-models#"
+      x-ngsi :
+        uri-prefix: "https://uri.fiware.org/ns/data-models#"
       description: >
             URN holding the id of the attribute
       enum: &CATEGORIES
@@ -188,23 +190,26 @@ components:
           $ref: "https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/Address"
         
         category:
-          x-attr-type: "EnumProperty"
+          x-ngsi:
+            type: "EnumProperty"
           type: "string"
           enum: *CATEGORIES
           description: >
             The categories that this building belongs to
 
         containedInPlace :
-          x-attr-type: "Relationship"
-          x-model: "https://schema.org/URL"
+          x-ngsi:
+            type: "Relationship"
+            model: "https://schema.org/URL"
           type: "string"
           format: "URL"
           description: >
             The URL this building resides within  
        
         dataProvider:
-          x-attr-type: "Property"
-          x-model: "https://schema.org/URL"
+          x-ngsi:
+            type: "Property"
+            model: "https://schema.org/URL"
           type: "string"
           format: "URL"
           description: >
@@ -214,32 +219,36 @@ components:
           $ref: 'https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/Description'
                
         floorsAboveGround:
-          x-attr-type: "Property"
-          x-model: "https://schema.org/Integer"
+          x-ngsi:
+            type: "Property"
+            model: "https://schema.org/Integer"
           type: "integer"
           format: "int32"
           description: >
             Number of floors above ground within the building
 
         floorsBelowGround:
-          x-attr-type: "Property"
-          x-model: "https://schema.org/Integer"
+          x-ngsi:
+            type: "Property"
+            model: "https://schema.org/Integer"
           type: "integer"
           format: "int32"
           description: >
             Number of floors below ground within the building
 
         occupier:
-          x-attr-type: "Relationship"
-          x-model: "https://schema.org/URL"
+          x-ngsi:
+            type: "Relationship"
+            model: "https://schema.org/URL"
           type: "string"
           format: "URL"
           description: >
             Link to the occupiers of the building
 
         openingHours :
-          x-attr-type: "Property"
-          x-model: "https://schema.org/openingHours"
+          x-ngsi:
+            type: "Property"
+            model: "https://schema.org/openingHours"
           type: array
           items:
             type: object
@@ -254,24 +263,27 @@ components:
             url: "https://schema.org/openingHours"
             
         owner :
-          x-attr-type: "Relationship"
-          x-model: "https://schema.org/URL"
+          x-ngsi:
+            type: "Relationship"
+            model: "https://schema.org/URL"
           type: "string"
           format: "URL"
           description: >
             The owner of this building
 
         refMap :
-          x-attr-type: "Property"
-          x-model: "https://schema.org/URL"
+          x-ngsi:
+            type: "Property"
+            model: "https://schema.org/URL"
           type: "string"
           format: "URL"
           description: >
             The URL holding a map of the building
             
         source:
-          x-attr-type: "Property"
-          x-model: ["https://schema.org/Text", "https://schema.org/URL"]
+          x-ngsi:
+            type: "Property"
+            model: ["https://schema.org/Text", "https://schema.org/URL"]
           type: "string"
           description: >
             A sequence of characters giving the source of the entity data.
