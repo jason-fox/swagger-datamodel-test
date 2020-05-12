@@ -210,11 +210,9 @@ components:
           description: >
             Specifies the URL to information about the provider of this information
           
-
         description:
           $ref: 'https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/Description'
-          
-          
+               
         floorsAboveGround:
           x-attr-type: "Property"
           x-model: "https://schema.org/Integer"
@@ -252,7 +250,9 @@ components:
                 type: array
                 items:
                   type: string
-                  
+          externalDocs:
+            url: "https://schema.org/openingHours"
+            
         owner :
           x-attr-type: "Relationship"
           x-model: "https://schema.org/URL"
@@ -260,8 +260,6 @@ components:
           format: "URL"
           description: >
             The owner of this building
-          externalDocs:
-            url: "https://schema.org/openingHours"
 
         refMap :
           x-attr-type: "Property"
