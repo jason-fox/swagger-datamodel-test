@@ -1,7 +1,8 @@
 Address:
 
-  x-attr-type: "Property"
-  x-model: "https://schema.org/address"
+  x-ngsi:
+    attr-type: "Property"
+    model: "https://schema.org/address"
   externalDocs:
     url: https://schema.org/address
 
@@ -54,9 +55,10 @@ Common:
         The entity type
         
     dateModified :
-      x-attr-type: "Property"
-      x-model: "https://schema.org/DateTime"
-      x-auto-gen: true
+      x-ngsi:
+        attr-type: "Property"
+        model: "https://schema.org/DateTime"
+        auto-gen: true
       type: "string"
       format: "date-time"
       readOnly: true
@@ -64,9 +66,10 @@ Common:
         Update timestamp of this entity.
         
     dateCreated :
-      x-attr-type: "Property"
-      x-model: "https://schema.org/DateTime"
-      x-auto-gen: true
+      x-ngsi:
+        type: "Property"
+        model: "https://schema.org/DateTime"
+        auto-gen: true
       type: "string"
       format: "date-time"
       readOnly: true
@@ -76,8 +79,9 @@ Common:
 Description:
   description: >
     A description of the item
-  x-attr-type: "Property"
-  x-model: "https://schema.org/Text"
+  x-ngsi:
+    type: "Property"
+    model: "https://schema.org/Text"
   type: "string"
   externalDocs:
     url:  "http://purl.org/dc/elements/1.1/description"
@@ -90,6 +94,8 @@ Movable:
   type: object
   properties:
     location:
+      x-ngsi:
+        type: "GeoProperty"
       type: object
       description: The current location of the item
       required:
@@ -110,7 +116,8 @@ Movable:
 
 
 Geometry:
-  x-attr-type: "GeoProperty"
+  x-ngsi:
+    type: "GeoProperty"
   type: object
   description: GeoJSon geometry
   required:
