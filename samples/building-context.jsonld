@@ -1,0 +1,360 @@
+{
+    "@context": {
+        "type": {
+            "@id": "ngsi-ld:type",
+            "@type": "xsd:string"
+        },
+        "id": "@id",
+        "ngsi-ld": "https://uri.etsi.org/ngsi-ld/",
+        "fiware": "https://uri.fiware.org/ns/data-models#",
+        "schema": "https://schema.org/",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "Building": "fiware:Building",
+        "address": "schema:address",
+        "addressCountry": {
+            "@id": "schema:addressCountry",
+            "@type": "xsd:string"
+        },
+        "addressLocality": {
+            "@id": "schema:addressLocality",
+            "@type": "xsd:string"
+        },
+        "addressRegion": {
+            "@id": "schema:addressRegion",
+            "@type": "xsd:string"
+        },
+        "apartments": "fiware:apartments",
+        "bakehouse": "fiware:bakehouse",
+        "barn": "fiware:barn",
+        "bridge": "fiware:bridge",
+        "bungalow": "fiware:bungalow",
+        "bunker": "fiware:bunker",
+        "cabin": "fiware:cabin",
+        "carport": "fiware:carport",
+        "category": {
+            "@id": "fiware:category",
+            "@type": "@vocab"
+        },
+        "cathedral": "fiware:cathedral",
+        "chapel": "fiware:chapel",
+        "church": "fiware:church",
+        "civic": "fiware:civic",
+        "commercial": "fiware:commercial",
+        "conservatory": "fiware:conservatory",
+        "construction": "fiware:construction",
+        "containedInPlace": {
+            "@id": "fiware:containedInPlace",
+            "@type": "@id"
+        },
+        "cowshed": "fiware:cowshed",
+        "dataProvider": {
+            "@id": "fiware:dataProvider",
+            "@type": "xsd:string"
+        },
+        "description": {
+            "@id": "ngsi-ld:description",
+            "@type": "xsd:string"
+        },
+        "detached": "fiware:detached",
+        "digester": "fiware:digester",
+        "dormitory": "fiware:dormitory",
+        "farm": "fiware:farm",
+        "farm_auxiliary": "fiware:farm_auxiliary",
+        "floorsAboveGround": {
+            "@id": "fiware:floorsAboveGround",
+            "@type": "xsd:integer"
+        },
+        "floorsBelowGround": {
+            "@id": "fiware:floorsBelowGround",
+            "@type": "xsd:integer"
+        },
+        "garage": "fiware:garage",
+        "garages": "fiware:garages",
+        "garbage_shed": "fiware:garbage_shed",
+        "grandstand": "fiware:grandstand",
+        "greenhouse": "fiware:greenhouse",
+        "hangar": "fiware:hangar",
+        "hospital": "fiware:hospital",
+        "hotel": "fiware:hotel",
+        "house": "fiware:house",
+        "houseboat": "fiware:houseboat",
+        "hut": "fiware:hut",
+        "industrial": "fiware:industrial",
+        "kindergarten": "fiware:kindergarten",
+        "kiosk": "fiware:kiosk",
+        "location": "ngsi-ld:location",
+        "mosque": "fiware:mosque",
+        "occupier": {
+            "@id": "fiware:occupier",
+            "@type": "@id"
+        },
+        "office": "fiware:office",
+        "openingHours": {
+            "@id": "schema:openingHours",
+            "@type": "xsd:array"
+        },
+        "owner": {
+            "@id": "fiware:owner",
+            "@type": "@id"
+        },
+        "parking": "fiware:parking",
+        "pavilion": "fiware:pavilion",
+        "postOfficeBoxNumber": {
+            "@id": "schema:postOfficeBoxNumber",
+            "@type": "xsd:string"
+        },
+        "postalCode": {
+            "@id": "schema:postalCode",
+            "@type": "xsd:string"
+        },
+        "public": "fiware:public",
+        "refMap": {
+            "@id": "fiware:refMap",
+            "@type": "xsd:string"
+        },
+        "residential": "fiware:residential",
+        "retail": "fiware:retail",
+        "riding_hall": "fiware:riding_hall",
+        "roof": "fiware:roof",
+        "ruins": "fiware:ruins",
+        "school": "fiware:school",
+        "service": "fiware:service",
+        "shed": "fiware:shed",
+        "shrine": "fiware:shrine",
+        "source": {
+            "@id": "fiware:source",
+            "@type": "xsd:string"
+        },
+        "stable": "fiware:stable",
+        "stadium": "fiware:stadium",
+        "static_caravan": "fiware:static_caravan",
+        "streetAddress": {
+            "@id": "schema:streetAddress",
+            "@type": "xsd:string"
+        },
+        "sty": "fiware:sty",
+        "synagogue": "fiware:synagogue",
+        "temple": "fiware:temple",
+        "terrace": "fiware:terrace",
+        "train_station": "fiware:train_station",
+        "transformer_tower": "fiware:transformer_tower",
+        "transportation": "fiware:transportation",
+        "university": "fiware:university",
+        "warehouse": "fiware:warehouse",
+        "water_tower": "fiware:water_tower"
+    },
+    "@graph": [
+        {
+            "@id": "fiware:Building",
+            "@type": "rdfs:Class",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "## Description\nThis entity contains a harmonised description of a Building. This entity is associated with the vertical segments of smart homes, smart cities, industry and related IoT applications.\nThis data model has been partially developed in cooperation with mobile operators and the [GSMA](https://www.gsma.com/iot/iot-big-data/), compared to GSMA data model following changes are introduced:\n-   the reference to `BuildingType` is removed, since `BuildingType` compared to\n    `category` attribute does not introduce significant information.\n\n-   `category` attribute is required.\n-   `openingHours` is introduced following schema.org data model to allow\n    fine-grained on building opening times. GSMA supported this as free text in\n    the `notes` attribute (removed as well).\n\n-   `refSubscriptionService` is not supported, since `SubscriptionService` model\n    is not supported currently.\n\n## Data Model\nFor a full description of the following attributes refer to GSMA [IoT Big Data Harmonised Data Model](https://github.com/GSMADeveloper/NGSI-LD-Entities)"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "Building"
+                }
+            ],
+            "rdfs:subClassOf": {
+                "@id": "schema:Thing"
+            }
+        },
+        {
+            "@id": "schema:address",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The mailing address."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "address"
+                }
+            ]
+        },
+        {
+            "@id": "fiware:containedInPlace",
+            "@type": "ngsi-ld:Relationship",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The URL this building resides within"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "containedInPlace"
+                }
+            ]
+        },
+        {
+            "@id": "fiware:dataProvider",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Specifies the URL to information about the provider of this information"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "dataProvider"
+                }
+            ]
+        },
+        {
+            "@id": "ngsi-ld:description",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "A description of the item"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "description"
+                }
+            ]
+        },
+        {
+            "@id": "fiware:floorsAboveGround",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Number of floors above ground within the building"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "floorsAboveGround"
+                }
+            ]
+        },
+        {
+            "@id": "fiware:floorsBelowGround",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Number of floors below ground within the building"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "floorsBelowGround"
+                }
+            ]
+        },
+        {
+            "@id": "ngsi-ld:location",
+            "@type": "ngsi-ld:GeoProperty",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The current location of the item"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "location"
+                }
+            ]
+        },
+        {
+            "@id": "fiware:occupier",
+            "@type": "ngsi-ld:Relationship",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Link to the occupiers of the building"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "occupier"
+                }
+            ]
+        },
+        {
+            "@id": "fiware:openingHours",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": ""
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "openingHours"
+                }
+            ]
+        },
+        {
+            "@id": "fiware:owner",
+            "@type": "ngsi-ld:Relationship",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The owner of this building"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "owner"
+                }
+            ]
+        },
+        {
+            "@id": "fiware:refMap",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "The URL holding a map of the building"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "refMap"
+                }
+            ]
+        },
+        {
+            "@id": "fiware:source",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "A sequence of characters giving the source of the entity data."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "source"
+                }
+            ]
+        }
+    ]
+}
