@@ -27,6 +27,25 @@ Generate Markdown documentation
 datamodelgen markdown -i building.yaml -l en
 ```
 
+Validate Swagger
+
+```console
+datamodelgen validate -i building.yaml -l en
+```
+
+Display YAML
+
+```console
+datamodelgen validate -i building.yaml -l en
+```
+
+
+Add an x-description in a specified language.
+
+```console
+datamodelgen addLang -i building.yaml -l en
+```
+
 
 ## TO DO
 
