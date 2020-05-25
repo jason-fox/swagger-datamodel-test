@@ -68,11 +68,11 @@ function getContext(api, context, expand) {
       ngsi['uri-prefix'] || 'https://uri.fiware.org/ns/data-models#';
 
     if (schema.allOf) {
-      addContexts(ngsi, schema.allOf, text, expand);
+      addContexts(ngsi, schema.allOf, text, expand, false);
     }
 
     if (schema.properties) {
-      addContexts(ngsi, schema.properties, text, expand);
+      addContexts(ngsi, schema.properties, text, expand, true);
     }
   });
 
@@ -102,7 +102,7 @@ function getContext(api, context, expand) {
   return { '@context': context };
 }
 
-function addContexts(ngsi, schemaProperties, text, expand) {
+function addContexts(ngsi, schemaProperties, text, expand, addKeys) {
   Object.keys(schemaProperties).forEach(key => {
     const value = schemaProperties[key];
     const prop = value['x-ngsi'] || {};
@@ -115,7 +115,10 @@ function addContexts(ngsi, schemaProperties, text, expand) {
     const uri = prop.uri || prop['uri-prefix'] + key;
     const type = prop.type || 'Property';
 
-    //addEntry(text, type, key, uri, value, expand);
+
+    if(addKeys){
+      addEntry(text, type, key, uri, value, expand);
+    }
     if (value.properties && prop['uri-prefix']) {
       Object.keys(value.properties).forEach(key => {
         const innerValue = value.properties[key];

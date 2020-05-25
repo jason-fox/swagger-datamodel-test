@@ -129,7 +129,6 @@ function addEntry(schema, text) {
         const type = ngsi.type || 'Property';
         const desc = value.description ? value.description.trim() : '';
 
-        console.log(value);
         text.push('       -  `' + key + '`: ' + desc);
         text.push(
           '           -  Attribute type: **' + type + '**. ' + getModel(ngsi)

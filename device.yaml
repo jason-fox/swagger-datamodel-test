@@ -148,14 +148,14 @@ components:
             type: Property
             model: 'https://schema.org/StructuredValue'
             properties:
-              - dateModified:
-                  x-ngsi:
-                    type: Property
-                    model: 'https://schema.org/DateTime'
-                  description: |
-                    Last update timestamp of this attribute
+              dateModified:
+                x-ngsi:
+                  type: Property
+                  model: 'https://schema.org/DateTime'
+                description: |
+                  Last update timestamp of this attribute
+                readOnly: true
           type: string
-          readOnly: true
           description: >
             Device's technical configuration. This attribute is intended to be a
             dictionary of properties which capture parameters which have to do
