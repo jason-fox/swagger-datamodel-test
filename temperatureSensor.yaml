@@ -4,11 +4,27 @@ info:
   version: 1.0.0
   title: TemperatureSensor
 
-tags:
-  $ref: "common.yaml#/smartSensoring"
+tags: 
+  - name: ngsi-ld
+    description: >
+      NGSI-LD Linked-data Format
+  - name: ngsi-v2
+    description: >
+      NGSI-v2 Format
+  
 
-paths:
-  $ref: "common.yaml#/dummyPath"
+paths: 
+  /ngsi-ld:
+    get:
+      tags:
+        - ngsi-ld
+      responses:
+        '200':    # status code
+          description: None
+          content:
+            application/json:
+              schema: 
+                type: object
  
 
 components:
@@ -18,11 +34,11 @@ components:
       required:
         -  temperature
       allOf:
-        - $ref: device.yaml#/components/schemas/Device
+        - $ref: https://jason-fox.github.io/swagger-datamodel-test/device.yaml#/components/schemas/Device
 
       description: >
         A device that consists of a sensor, has category `saref:Sensor` and is used for the purpose of sensing temperature`.
       
       properties:
         temperature:
-          $ref: saref.yaml#/temperature
+          $ref: https://jason-fox.github.io/swagger-datamodel-test/saref.yaml#/temperature

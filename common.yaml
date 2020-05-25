@@ -1,13 +1,19 @@
 
 
-smartSensoring:
-  - name: smart sensoring
-    description: Everything about sensors
+tags: 
+  - name: ngsi-ld
+    description: >
+      NGSI-LD Linked-data Format
+  - name: ngsi-v2
+    description: >
+      NGSI-v2 Format
 
 
 dummyPath:
   /ngsi:
     get:
+      tags:
+        - ngsi-ld
       responses:
         '200':    # status code
           description: None
