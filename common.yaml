@@ -1,3 +1,23 @@
+
+
+smartSensoring:
+  - name: smart sensoring
+    description: Everything about sensors
+
+
+dummyPath:
+  /ngsi:
+    get:
+      responses:
+        '200':    # status code
+          description: None
+          content:
+            application/json:
+              schema: 
+                type: object
+
+
+
 Address:
 
   x-ngsi:

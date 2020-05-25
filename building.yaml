@@ -45,6 +45,13 @@ tags:
 paths:
   /nsgi-ld:
     get:
+      parameters:
+        - in: query
+          name: type
+          schema:
+            type: string
+            enum: [Building]
+          required: true
       responses:
         200:
           description: "NGSI-LD Linked-data Format"
@@ -58,6 +65,13 @@ paths:
 
   /nsgi-v2:
     get:
+      parameters:
+        - in: query
+          name: type
+          schema:
+            type: string
+            enum: [Building]
+          required: true
       responses:
         200:
           description: "NGSI-v2 Format"

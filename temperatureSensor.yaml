@@ -1,0 +1,28 @@
+openapi: 3.0.0
+info:
+  description: ''
+  version: 1.0.0
+  title: TemperatureSensor
+
+tags:
+  $ref: "common.yaml#/smartSensoring"
+
+paths:
+  $ref: "common.yaml#/dummyPath"
+ 
+
+components:
+  schemas:
+     TemperatureSensor:
+      type: object
+      required:
+        -  temperature
+      allOf:
+        - $ref: device.yaml#/components/schemas/Device
+
+      description: >
+        A device that consists of a sensor, has category `saref:Sensor` and is used for the purpose of sensing temperature`.
+      
+      properties:
+        temperature:
+          $ref: saref.yaml#/temperature
