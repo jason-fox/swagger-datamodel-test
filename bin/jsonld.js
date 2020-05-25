@@ -16,15 +16,6 @@ function replaceCommonContextURLs(text) {
     .replace(/https:\/\/uri\.etsi\.org\/ngsi\-ld\//g, 'ngsi-ld:');
 }
 
-/*
-
- "observedAt": {
-        "@id": "https://uri.etsi.org/ngsi-ld/observedAt",
-        "@type": "DateTime"
-      },
-
-*/
-
 function addEntry(text, type, key, uri, value, expand) {
   if (expand) {
     if (type === 'Property' || type === 'GeoProperty') {
@@ -76,36 +67,12 @@ function getContext(api, context, expand) {
     ngsi['uri-prefix'] =
       ngsi['uri-prefix'] || 'https://uri.fiware.org/ns/data-models#';
 
+    if (schema.allOf) {
+      addContexts(ngsi, schema.allOf, text, expand);
+    }
+
     if (schema.properties) {
-      Object.keys(schema.properties).forEach(key => {
-        const value = schema.properties[key];
-        const prop = value['x-ngsi'] || {};
-
-        prop['uri-prefix'] =
-          prop['uri-prefix'] ||
-          ngsi['uri-prefix'] ||
-          'https://uri.fiware.org/ns/data-models#';
-
-        const uri = prop.uri || prop['uri-prefix'] + key;
-        const type = prop.type || 'Property';
-
-        addEntry(text, type, key, uri, value, expand);
-
-        if (value.properties && prop['uri-prefix']) {
-          Object.keys(value.properties).forEach(key => {
-            //text.push('"' + key + '": "' + prop['uri-prefix'] + key + '"');
-
-            const innerValue = value.properties[key];
-            const innerProp = innerValue['x-ngsi'] || {};
-            innerProp['uri-prefix'] =
-              innerProp['uri-prefix'] || prop['uri-prefix'];
-            const uri = innerProp['uri-prefix'] + key;
-            const type = innerProp.type || 'Property';
-
-            addEntry(text, type, key, uri, innerValue, expand);
-          });
-        }
-      });
+      addContexts(ngsi, schema.properties, text, expand);
     }
   });
 
@@ -133,6 +100,47 @@ function getContext(api, context, expand) {
     });
 
   return { '@context': context };
+}
+
+function addContexts(ngsi, schemaProperties, text, expand) {
+  Object.keys(schemaProperties).forEach(key => {
+    const value = schemaProperties[key];
+    const prop = value['x-ngsi'] || {};
+
+    prop['uri-prefix'] =
+      prop['uri-prefix'] ||
+      ngsi['uri-prefix'] ||
+      'https://uri.fiware.org/ns/data-models#';
+
+    const uri = prop.uri || prop['uri-prefix'] + key;
+    const type = prop.type || 'Property';
+
+    //addEntry(text, type, key, uri, value, expand);
+    if (value.properties && prop['uri-prefix']) {
+      Object.keys(value.properties).forEach(key => {
+        const innerValue = value.properties[key];
+        const innerProp = innerValue['x-ngsi'] || {};
+        innerProp['uri-prefix'] = innerProp['uri-prefix'] || prop['uri-prefix'];
+        const uri = innerProp['uri-prefix'] + key;
+        const type = innerProp.type || 'Property';
+
+        addEntry(text, type, key, uri, innerValue, expand);
+      });
+    }
+
+    if (!expand && prop.properties) {
+      const metaData = prop.properties;
+      Object.keys(metaData).forEach(key => {
+        const value = metaData[key] || {};
+        const innerProp = value['x-ngsi'] || {};
+        innerProp['uri-prefix'] = innerProp['uri-prefix'] || prop['uri-prefix'];
+        const uri = innerProp['uri-prefix'] + key;
+        const type = innerProp.type || 'Property';
+
+        addEntry(text, type, key, uri, value, expand);
+      });
+    }
+  });
 }
 
 function addGraph(api, context) {

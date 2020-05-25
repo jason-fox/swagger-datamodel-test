@@ -18,6 +18,40 @@ dummyPath:
 
 
 
+providedBy:
+  x-ngsi:
+    type: "Relationship"
+    model: "https://schema.org/URL"
+    uri: "https://uri.fiware.org/ns/data-models#providedBy"
+    uri-prefix: "https://uri.fiware.org/ns/data-models#"
+  type: "string"
+  format: "URL"
+  description: >
+      The device that sent this reading
+
+observedAt:
+  x-ngsi:
+    type: "Property"
+    model: "https://schema.org/DateTime"
+    uri: "https://uri.etsi.org/ngsi-ld/observedAt"
+    uri-prefix: "https://uri.etsi.org/ngsi-ld/"
+  type: string
+  format: "date-time"
+  description: >
+    A timestamp which denotes when the reading was taken
+
+unitCode:
+  x-ngsi:
+    type: "Property"
+    model: "https://schema.org/Text"
+    uri: "https://uri.etsi.org/ngsi-ld/unitCode"
+    uri-prefix: "https://uri.etsi.org/ngsi-ld/"
+  type: "string"
+  description: >
+    A string representing the measurement unit corresponding to the Property value. It shall be
+    encoded using the UN/CEFACT Common Codes for Units of Measurement
+
+
 Address:
 
   x-ngsi:

@@ -30,9 +30,6 @@ function getRequired(required, key, readOnly) {
 }
 
 function addText(text, api) {
-
-
-
   Object.keys(api.components.schemas).forEach(obj => {
     const schema = api.components.schemas[obj];
     const hasProps = schema.properties || schema.allOf;
@@ -88,8 +85,7 @@ function addExamples(text, api) {
 }
 
 function addExample(examples) {
-
-  if(!examples){
+  if (!examples) {
     return '';
   }
   const text = [];
@@ -123,17 +119,34 @@ function addEntry(schema, text) {
     if (value.externalDocs && value.externalDocs.url) {
       text.push('   -  Normative References: ' + value.externalDocs.url);
     }
+    if (ngsi.properties) {
+      const metaData = ngsi.properties;
+      text.push('   -  Meta Data: ');
+      Object.keys(metaData).forEach(key => {
+        const value = metaData[key] || {};
+
+        const ngsi = value['x-ngsi'] || {};
+        const type = ngsi.type || 'Property';
+        const desc = value.description ? value.description.trim() : '';
+
+        console.log(value);
+        text.push('       -  `' + key + '`: ' + desc);
+        text.push(
+          '           -  Attribute type: **' + type + '**. ' + getModel(ngsi)
+        );
+      });
+    }
   });
 }
 
 function addEnums(description, enums) {
-  let texts =[];
+  let texts = [];
   enums.forEach(key => {
-    if(typeof key === 'string'  || key instanceof String){
-       texts.push(key);
-     } else {
-       texts.push(Object.keys(key)[0]);
-     }   
+    if (typeof key === 'string' || key instanceof String) {
+      texts.push(key);
+    } else {
+      texts.push(Object.keys(key)[0]);
+    }
   });
 
   return description.trim() + '. One of : `' + texts.join('`, `') + '`.';
