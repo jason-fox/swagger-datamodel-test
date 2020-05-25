@@ -37,14 +37,20 @@ info:
   version: "1.0.0"
   title: "Building"
 
-tags:
-- name: "smart cities"
-  description: "Everything about your Smart cities"
+tags: 
+  - name: ngsi-ld
+    description: >
+      NGSI-LD Linked-data Format
+  - name: ngsi-v2
+    description: >
+      NGSI-v2 Format
 
 
 paths:
   /nsgi-ld:
     get:
+      tags:
+        - ngsi-ld
       parameters:
         - in: query
           name: type
@@ -65,6 +71,8 @@ paths:
 
   /nsgi-v2:
     get:
+      tags:
+        - ngsi-v2
       parameters:
         - in: query
           name: type
