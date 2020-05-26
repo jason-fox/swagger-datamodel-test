@@ -1,5 +1,6 @@
 const SwaggerParser = require('@apidevtools/swagger-parser');
 const YAML = SwaggerParser.YAML;
+const $RefParser = require('@apidevtools/json-schema-ref-parser');
 
 const fs = require('fs');
 const Markdown = require('./markdown.js');
@@ -106,9 +107,17 @@ async function schemaRead(input, output) {
     if (err) {
       throw err;
     }
-    obj = JSON.parse(data);
-    fs.writeFileSync(output, Schema.schemaToYaml(obj));
+    x(JSON.parse(data), output);
   });
+}
+
+async function x(obj, output) {
+  try {
+    let schema = await $RefParser.dereference(obj);
+    fs.writeFileSync(output, Schema.schemaToYaml(schema));
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 function setLangDesc(obj, lang) {
