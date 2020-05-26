@@ -115,8 +115,7 @@ function addContexts(ngsi, schemaProperties, text, expand, addKeys) {
     const uri = prop.uri || prop['uri-prefix'] + key;
     const type = prop.type || 'Property';
 
-
-    if(addKeys){
+    if (addKeys) {
       addEntry(text, type, key, uri, value, expand);
     }
     if (value.properties && prop['uri-prefix']) {

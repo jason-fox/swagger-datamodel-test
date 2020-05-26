@@ -47,6 +47,12 @@ datamodelgen addLang -i building.yaml -l en
 ```
 
 
+Generate YAML from schema
+
+```console
+datamodelgen schemaRead -i schema.json -l en
+```
+
 ## TO DO
 
 Read and translate `x-description` tags ...

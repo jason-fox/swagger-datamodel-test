@@ -1,8 +1,10 @@
 const SwaggerParser = require('@apidevtools/swagger-parser');
 const YAML = SwaggerParser.YAML;
+
 const fs = require('fs');
 const Markdown = require('./markdown.js');
 const JSONLD = require('./jsonld.js');
+const Schema = require('./schema.js');
 
 let api;
 
@@ -98,6 +100,17 @@ async function jsonld(input, output, lang) {
   );
 }
 
+async function schemaRead(input, output) {
+  let obj;
+  await fs.readFile(input, 'utf8', function(err, data) {
+    if (err) {
+      throw err;
+    }
+    obj = JSON.parse(data);
+    fs.writeFileSync(output, Schema.schemaToYaml(obj));
+  });
+}
+
 function setLangDesc(obj, lang) {
   const xDesc = obj['x-description'] || {};
   xDesc[lang] = xDesc[lang] || obj.description || '';
@@ -107,6 +120,7 @@ function setLangDesc(obj, lang) {
 exports.validate = validate;
 exports.yaml = yaml;
 exports.addLang = addLang;
+exports.schemaRead = schemaRead;
 exports.markdown = markdown;
 exports.jsonld = jsonld;
 exports.ngsi = ngsi;

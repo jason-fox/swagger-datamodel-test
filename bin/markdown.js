@@ -139,7 +139,7 @@ function addEntry(schema, text) {
 }
 
 function addEnums(description, enums) {
-  let texts = [];
+  const texts = [];
   enums.forEach(key => {
     if (typeof key === 'string' || key instanceof String) {
       texts.push(key);

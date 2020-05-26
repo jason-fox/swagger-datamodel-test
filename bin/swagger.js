@@ -12,6 +12,9 @@ const yargs = require('yargs')
   .command('yaml', 'output YAML')
   .alias('i', 'file')
   .nargs('i', 1)
+  .command('schema', 'schema to YAML')
+  .alias('i', 'file')
+  .nargs('i', 1)
   .demandOption(['i'])
   .command('addLang', 'append a lang to the YAML')
   .nargs('i', 1)
@@ -39,6 +42,10 @@ switch (command) {
     break;
   case 'yaml':
     reader.yaml(argv.file);
+    break;
+  case 'schemaRead':
+    out = out + '.yaml';
+    reader.schemaRead(argv.file, out);
     break;
   case 'addLang':
     out = out + '.' + argv.lang + path.parse(argv.file).ext;
