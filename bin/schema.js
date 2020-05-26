@@ -71,6 +71,10 @@ function schemaToYaml(obj) {
               inner.format = 'int32';
             }
 
+            if (value.type == 'array') {
+            	inner.items = value.items;
+            }
+
             unordered[key] = inner;
           }
         }
