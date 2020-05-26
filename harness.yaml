@@ -1,0 +1,34 @@
+openapi: 3.0.0
+info:
+  description: ''
+  version: 1.0.0
+  title: Harness
+
+tags: 
+  - name: ngsi-ld
+    description: >
+      NGSI-LD Linked-data Format
+  - name: ngsi-v2
+    description: >
+      NGSI-v2 Format
+  
+
+paths: 
+  /ngsi-ld:
+    get:
+      tags:
+        - ngsi-ld
+      responses:
+        '200':    # status code
+          description: None
+          content:
+            application/json:
+              schema: 
+                type: object
+ 
+
+components:
+  schemas:
+     Test:
+        allOf:
+        - $ref: schema.yaml#/Building
