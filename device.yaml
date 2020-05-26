@@ -222,7 +222,7 @@ components:
              value can be vendor dependent.
         description:
           $ref: >-
-            https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/Description
+            https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/description
         firmwareVersion:
           x-ngsi:
             type: Property
@@ -247,7 +247,7 @@ components:
             values if the device has more than one IP address.
         location:
           $ref: >-
-            https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/Movable
+            https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/location
         macAddress:
           x-ngsi:
             type: Property

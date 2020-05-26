@@ -208,7 +208,7 @@ components:
       properties:
       
         address:
-          $ref: "https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/Address"
+          $ref: "https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/address"
         
         category:
           x-ngsi:
@@ -237,7 +237,7 @@ components:
             Specifies the URL to information about the provider of this information
           
         description:
-          $ref: 'https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/Description'
+          $ref: 'https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/description'
                
         floorsAboveGround:
           x-ngsi:
@@ -259,7 +259,7 @@ components:
 
 
         location:
-          $ref: "https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/Movable"
+          $ref: "https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/location"
 
         occupier:
           x-ngsi:

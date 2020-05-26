@@ -58,7 +58,7 @@ unitCode:
     encoded using the UN/CEFACT Common Codes for Units of Measurement
 
 
-Address:
+address:
 
   x-ngsi:
     attr-type: "Property"
@@ -136,8 +136,20 @@ Common:
       readOnly: true
       description: >
         Entity's creation timestamp.
-        
-Description:
+
+
+
+
+name: 
+  description: >
+    The name of the item
+  x-ngsi:
+    type: "Property"
+    uri: "https://uri.etsi.org/ngsi-ld/name"
+    uri-prefix: "https://uri.etsi.org/ngsi-ld/"
+  type: string
+
+description:
   description: >
     A description of the item
   x-ngsi:
@@ -153,7 +165,7 @@ Description:
       - "https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/elements/1.1/description"
    
 
-Movable: 
+location: 
   description: >
     The current location of the item
   x-ngsi:

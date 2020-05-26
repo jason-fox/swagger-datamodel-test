@@ -5,13 +5,13 @@ const $RefParser = require('@apidevtools/json-schema-ref-parser');
 
 const common = {
   address:
-    'https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/Address',
+    'https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/address',
   description:
-    'https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/Description',
+    'https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/description',
   location:
-    'https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/Address',
+    'https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/location',
   name:
-    'https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/Description'
+    'https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/name'
 };
 
 function getModel(value, ngsi) {
