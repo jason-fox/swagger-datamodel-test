@@ -1,6 +1,6 @@
 {
     "@context": {
-        "type": "ngsi-ld:type",
+        "type": "@type",
         "id": "@id",
         "ngsi-ld": "https://uri.etsi.org/ngsi-ld/",
         "fiware": "https://uri.fiware.org/ns/data-models#",
