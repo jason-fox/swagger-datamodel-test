@@ -114,6 +114,7 @@ Building:
     category:
       x-ngsi:
         type: "EnumProperty"
+        uri-prefix: 'https://uri.fiware.org/ns/data-models#'
       type: "string"
       enum: *CATEGORIES
       description: >

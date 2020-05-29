@@ -32,9 +32,19 @@ components:
     # Use the Smart Data Models definition of a Building
     Building:
       $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/building.yaml#/Building
+    BuildingCategory:
+      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/building.yaml#/Categories
+
     # Use the Smart Data Models definition of a Device
     Device:
       $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/device.yaml#/Device
+    DeviceCategory:
+      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/saref-terms.yaml#/Categories
+    ControlledProperties:
+      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/saref-terms.yaml#/ControlledProperties
+    SupportedProtocol:
+      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/device.yaml#/SupportedProtocol
+
     # Use the GeoJSON definitions for various Geographical type
     Point:
       $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/Point

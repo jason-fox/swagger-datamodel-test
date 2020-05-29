@@ -55,12 +55,15 @@ Device:
 
         -  Allowed values: Interval \[0,1\] and -1
     category:
+      x-ngsi:
+        type: "EnumProperty"
+        uri-prefix: 'https://uri.fiware.org/ns/data-models#'
       description: >
         See attribute `category` from
         [DeviceModel](../../DeviceModel/doc/spec.md). Optional but
         recommended to optimize queries.
-      $ref: >-
-        ./saref-terms.yaml#/category
+      enum:
+        $ref: ./saref-terms.yaml#/Categories/enum
     controlledAsset:
       x-ngsi:
         type: Relationship
@@ -69,14 +72,15 @@ Device:
       description: |
         The asset(s) (building, object, etc.) controlled by the device.
     controlledProperty:
-      
+      x-ngsi:
+        type: "EnumProperty"
+        uri-prefix: 'https://uri.fiware.org/ns/data-models#'
       description: >
         See attribute `controlledProperty` from
         [DeviceModel](../../DeviceModel/doc/spec.md). Optional but
         recommended to optimize queries.
-
-      $ref: >-
-        saref-terms.yaml#/controlledProperty
+    enum:
+        $ref: ./saref-terms.yaml#/ControlledProperties/enum
 
     configuration:
       x-ngsi:

@@ -1,13 +1,14 @@
-propertiesOfProperties:
-  providedBy:
-      $ref: "ngsi-ld.yaml#/providedBy"
-  observedAt:
-      $ref: "ngsi-ld.yaml#/observedAt"
-  unitCode:
-      $ref: "ngsi-ld.yaml#/unitCode"
+
+properties: &commonMeta 
+    providedBy:
+        $ref: "ngsi-ld.yaml#/providedBy"
+    observedAt:
+        $ref: "ngsi-ld.yaml#/observedAt"
+    unitCode:
+        $ref: "ngsi-ld.yaml#/unitCode"
 
 
-category:
+Categories:
   type: string
   x-ngsi:
     uri-prefix: 'https://w3id.org/saref#'
@@ -80,13 +81,14 @@ category:
           A device attached to an irrigation system that projects water
           beyond it
 
-          
 
-controlledProperty:
-  x-ngsi:
-    type: EnumProperty
+ControlledProperties:
   type: string
-  enum: 
+  x-ngsi:
+    uri-prefix: 'https://w3id.org/saref#'
+  description: >
+        URN holding the id of the attribute
+  enum:
     - temperature
     - humidity
     - light
@@ -121,7 +123,7 @@ controlledProperty:
     - heading
     - weight
     - waterConsumption
-    - gasComsumption
+    - gasConsumption
     - electricityConsumption
     - soilMoisture
     - trafficFlow
@@ -130,15 +132,15 @@ controlledProperty:
     - movementActivity
 
 
+
 # Here follows additional attributes for individual devices.
-Measurement:
+
 
 temperature:
   x-ngsi:
     uri: 'https://w3id.org/saref#temperature'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: Property related to some measurements that are characterized by a certain value that is measured in a temperature unit (degree_Celsius, degree_Fahrenheit, or degree_kelvin)
@@ -147,8 +149,7 @@ humidity:
   x-ngsi:
     uri: 'https://w3id.org/saref#humidity'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: Property related to some measurements that are characterized by a certain value that is measured in a humidity unit
@@ -157,8 +158,7 @@ light:
   x-ngsi:
     uri: 'https://w3id.org/saref#light'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: Property related to some measurements that are characterized by a certain value that is measured in a illuminance unit (lux)
@@ -167,8 +167,7 @@ motion:
   x-ngsi:
     uri: 'https://w3id.org/saref#motion'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: Property related to some measurements that are characterized by a certain value that is measured in a unit of measure for motion
@@ -177,8 +176,7 @@ fillingLevel:
   x-ngsi:
     uri: 'https://w3id.org/saref#fillingLevel'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: Property related to some measurements that are characterized by a certain value that is a filling level.
@@ -187,8 +185,7 @@ occupancy:
   x-ngsi:
     uri: 'https://w3id.org/saref#occupancy'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: Property related to some measurements that are characterized by a certain value (saref:hasValue property) that is measured in a unit of measure for occupancy
@@ -197,8 +194,7 @@ power:
   x-ngsi:
     uri: 'https://w3id.org/saref#power'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: Property related to some measurements that are characterized by a certain value that is measured in a power unit (such as watt or kilowatt). Further specializations of the saref:Power class can be found in the SAREF4ENER extension, where classes such as PowerMax, PowerMin and PowerExpected are defined.
@@ -207,8 +203,7 @@ pressure:
   x-ngsi:
     uri: 'https://w3id.org/saref#pressure'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: Property related to some measurements that are characterized by a certain value that is measured in a pressure unit (bar or pascal)
@@ -216,8 +211,7 @@ smoke:
   x-ngsi:
     uri: 'https://w3id.org/saref#smoke'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: Property related to some measurements that are characterized by a certain value that is measured in a unit of measure for smoke
@@ -226,8 +220,7 @@ energy:
   x-ngsi:
     uri: 'https://w3id.org/saref#energy'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: Property related to some measurements that are characterized by a certain value measured in an energy unit (such as Kilowatt_Hour or Watt_hour). Furter specializations of the saref:Energy class can be found in the SAREF4ENER extension, where classes such as EnergyMax, EnergyMin and EnergyExpected are defined.
@@ -244,8 +237,7 @@ noiseLevel:
   x-ngsi:
     uri: 'https://w3id.org/saref#noiseLevel'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the property noise level
@@ -253,16 +245,14 @@ weatherConditions:
   x-ngsi:
     uri: 'https://w3id.org/saref#weatherConditions'
     model: 'https://schema.org/StructuredValue'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: object
   description: An individual representing the current weather conditions 
 precipitation:
   x-ngsi:
     uri: 'https://saref.etsi.org/saref4agri#Precipitation'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: The amount of water falling in the soil by natural process (e.g. rain).
@@ -270,8 +260,7 @@ windSpeed:
   x-ngsi:
     uri: 'https://w3id.org/saref#windSpeed'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the property wind speed
@@ -279,8 +268,7 @@ windDirection:
   x-ngsi:
     uri: 'https://w3id.org/saref#windDirection'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the property wind direction
@@ -288,8 +276,7 @@ atmosphericPressure:
   x-ngsi:
     uri: 'https://w3id.org/saref#atmosphericPressure'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the atmospheric pressure 
@@ -297,8 +284,7 @@ solarRadiation:
   x-ngsi:
     uri: 'https://w3id.org/saref#solarRadiation'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the property solar radiation
@@ -306,8 +292,7 @@ depth:
   x-ngsi:
     uri: 'https://w3id.org/saref#depth'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the property depth
@@ -315,8 +300,7 @@ pH:
   x-ngsi:
     uri: 'https://w3id.org/saref#pH'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the property pH
@@ -324,8 +308,7 @@ conductivity:
   x-ngsi:
     uri: 'https://w3id.org/saref#conductivity'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the property conductitivity
@@ -333,8 +316,7 @@ conductance:
   x-ngsi:
     uri: 'https://w3id.org/saref#conductance'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the property conductance
@@ -342,8 +324,7 @@ tss:
   x-ngsi:
     uri: 'https://w3id.org/saref#tss'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the property true total sulphur
@@ -351,8 +332,7 @@ tds:
   x-ngsi:
     uri: 'https://w3id.org/saref#tds'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the property total disolved solids
@@ -360,8 +340,7 @@ turbidity:
   x-ngsi:
     uri: 'https://w3id.org/saref#turbidity'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the property turbidity
@@ -369,8 +348,7 @@ salinity:
   x-ngsi:
     uri: 'https://w3id.org/saref#salinity'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the property salinity
@@ -378,8 +356,7 @@ orp:
   x-ngsi:
     uri: 'https://w3id.org/saref#orp'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the property  Operative Radiated Power
@@ -387,8 +364,7 @@ cdom:
   x-ngsi:
     uri: 'https://w3id.org/saref#cdom'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the property Colored Dissolved Organic Matter
@@ -396,8 +372,7 @@ waterPollution:
   x-ngsi:
     uri: 'https://w3id.org/saref#waterPollution'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the property water pollution.
@@ -405,8 +380,7 @@ speed:
   x-ngsi:
     uri: 'https://w3id.org/saref#speed'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the property speed.
@@ -414,8 +388,7 @@ heading:
   x-ngsi:
     uri: 'https://w3id.org/saref#heading'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the property heading.
@@ -423,8 +396,7 @@ weight:
   x-ngsi:
     uri: 'https://w3id.org/saref#weight'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the property weight.
@@ -432,17 +404,16 @@ waterConsumption:
   x-ngsi:
     uri: 'https://w3id.org/saref#waterConsumption'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the property water consumption.
-gasComsumption:
+
+gasConsumption:
   x-ngsi:
     uri: 'https://w3id.org/saref#gasComsumption'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the property gas consumption.
@@ -450,8 +421,7 @@ electricityConsumption:
   x-ngsi:
     uri: 'https://w3id.org/saref#electricityConsumption'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the property electricity consumption.
@@ -461,8 +431,7 @@ airTemperature:
   x-ngsi:
     uri: 'https://saref.etsi.org/saref4agri#AirTemperature'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: The degree or intensity of heat present in the air.
@@ -471,8 +440,7 @@ ambientHumidity:
   x-ngsi:
     uri: 'https://saref.etsi.org/saref4agri#AmbientHumidity'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: The amount of water vapour in the air.
@@ -481,8 +449,7 @@ irrigationWater:
   x-ngsi:
     uri: 'https://saref.etsi.org/saref4agri#IrrigationWater'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: The amount of water falling in the soil by irrigation methods.
@@ -491,8 +458,7 @@ plantGrowthStage:
   x-ngsi:
     uri: 'https://saref.etsi.org/saref4agri#PlantGrowthStage'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: The level or stage of growth of the plant.
@@ -501,8 +467,7 @@ soilMoisture:
   x-ngsi:
     uri: 'https://saref.etsi.org/saref4agri#SoilMoisture'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: The amount of water or humidity contained in the soil.
@@ -511,8 +476,7 @@ soilTemperature:
   x-ngsi:
     uri: 'https://saref.etsi.org/saref4agri#SoilTemperature'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: The degree or intensity of heat present in the soil.
@@ -523,8 +487,7 @@ fluorescence:
   x-ngsi:
     uri: 'https://saref.etsi.org/saref4envi#Fluorescence'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the light property fluorescence.
@@ -533,8 +496,7 @@ frequency:
   x-ngsi:
     uri: 'https://saref.etsi.org/saref4envi#Frequency'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the property frequency.
@@ -543,8 +505,7 @@ height:
   x-ngsi:
     uri: 'https://saref.etsi.org/saref4envi#Height'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the property height.
@@ -553,8 +514,7 @@ illuminance:
   x-ngsi:
     uri: 'https://saref.etsi.org/saref4envi#Illuminance'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description:  An individual representing the light property illuminance.
@@ -563,8 +523,7 @@ irradiance:
   x-ngsi:
     uri: 'https://saref.etsi.org/saref4envi#Irradiance'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the light property irradiance.
@@ -573,8 +532,7 @@ lightProperty:
   x-ngsi:
     uri: 'https://saref.etsi.org/saref4envi#LightAbsorption'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the light property light absorption.
@@ -583,8 +541,7 @@ lightMagnitude:
   x-ngsi:
     uri: 'https://saref.etsi.org/saref4envi#LightMagnitude'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the light property light magnitude.
@@ -593,8 +550,7 @@ luminiscence:
   x-ngsi:
     uri: 'https://saref.etsi.org/saref4envi#Luminiscence'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description:  An individual representing the light property luminiscence.
@@ -603,8 +559,7 @@ period:
   x-ngsi:
     uri: 'https://saref.etsi.org/saref4envi#Period'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the property period.
@@ -613,8 +568,7 @@ phosphorescence:
   x-ngsi:
     uri: 'https://saref.etsi.org/saref4envi#Phosphorescence'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the light property phosphorescence.
@@ -623,8 +577,7 @@ reflectionOfLight:
   x-ngsi:
     uri: 'https://saref.etsi.org/saref4envi#ReflectionOfLight'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the light property reflection of light.
@@ -633,8 +586,7 @@ scatteringOfLight:
   x-ngsi:
     uri: 'https://saref.etsi.org/saref4envi#ScatteringOfLight'
     model: 'https://schema.org/Number'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: number
   format: float
   description: An individual representing the light property scattering of light.
@@ -646,8 +598,7 @@ trafficFlow:
   x-ngsi:
     uri: 'https://w3id.org/saref#trafficFlow'
     model: 'https://schema.org/Text'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: string
   description: An individual representing the property traffic flow.
 
@@ -655,8 +606,7 @@ eatingActivity:
   x-ngsi:
     uri: 'https://w3id.org/saref#eatingActivity'
     model: 'https://schema.org/Text'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: string
   description: An individual representing the property eating activity.
 
@@ -664,8 +614,7 @@ milking:
   x-ngsi:
     uri: 'https://w3id.org/saref#milking'
     model: 'https://schema.org/Text'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: string
   description: An individual representing the property milking.
 
@@ -673,7 +622,6 @@ movementActivity:
   x-ngsi:
     uri: 'https://w3id.org/saref#movementActivity'
     model: 'https://schema.org/Text'
-    properties:
-      $ref: "#/propertiesOfProperties"
+    properties: *commonMeta
   type: string
   description: An individual representing the property movement activity.
