@@ -1,10 +1,10 @@
 propertiesOfProperties:
   providedBy:
-      $ref: "common.yaml#/providedBy"
+      $ref: "ngsi-ld.yaml#/providedBy"
   observedAt:
-      $ref: "common.yaml#/observedAt"
+      $ref: "ngsi-ld.yaml#/observedAt"
   unitCode:
-      $ref: "common.yaml#/unitCode"
+      $ref: "ngsi-ld.yaml#/unitCode"
 
 
 category:

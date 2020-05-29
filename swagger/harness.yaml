@@ -1,0 +1,49 @@
+openapi: 3.0.0
+info:
+  description: ''
+  version: 1.0.0
+  title: Harness
+
+tags: 
+  - name: ngsi-ld
+    description: >
+      NGSI-LD Linked-data Format
+  - name: ngsi-v2
+    description: >
+      NGSI-v2 Format
+  
+
+paths: 
+  /ngsi-ld:
+    get:
+      tags:
+        - ngsi-ld
+      responses:
+        '200':    # status code
+          description: None
+          content:
+            application/json:
+              schema: 
+                type: object
+ 
+
+components:
+  schemas:
+    Building:
+      $ref: ./models/building.yaml#/Building
+    Device:
+      $ref: ./models/device.yaml#/Device
+    Point:
+      $ref: ./models/geojson-ld.yaml#/Point
+    LineString:
+      $ref: ./models/geojson-ld.yaml#/LineString
+    Polygon:
+      $ref: ./models/geojson-ld.yaml#/Polygon
+    MultiPoint:
+      $ref: ./models/geojson-ld.yaml#/MultiPoint
+    MultiLineString:
+      $ref: ./models/geojson-ld.yaml#/MultiLineString
+    MultiPolygon:
+      $ref: ./models/geojson-ld.yaml#/MultiPolygon
+
+

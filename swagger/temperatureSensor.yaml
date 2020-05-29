@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   description: ''
   version: 1.0.0
-  title: Harness
+  title: TemperatureSensor
 
 tags: 
   - name: ngsi-ld
@@ -29,6 +29,16 @@ paths:
 
 components:
   schemas:
-     Test:
-        allOf:
-        - $ref: schema.yaml#/Building
+     TemperatureSensor:
+      type: object
+      required:
+        -  temperature
+      allOf:
+        - $ref: ./models/device.yaml#/Device
+
+      description: >
+        A device that consists of a sensor, has category `saref:Sensor` and is used for the purpose of sensing temperature`.
+      
+      properties:
+        temperature:
+          $ref: ./models/saref-terms.yaml#/temperature
