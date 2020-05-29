@@ -29,21 +29,38 @@ paths:
 
 components:
   schemas:
+    # Use the Smart Data Models definition of a Building
     Building:
-      $ref: ./models/building.yaml#/Building
+      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/building.yaml#/Building
+    # Use the Smart Data Models definition of a Device
     Device:
-      $ref: ./models/device.yaml#/Device
+      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/device.yaml#/Device
+    # Use the GeoJSON definitions for various Geographical type
     Point:
-      $ref: ./models/geojson-ld.yaml#/Point
+      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/Point
     LineString:
-      $ref: ./models/geojson-ld.yaml#/LineString
+      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/LineString
     Polygon:
-      $ref: ./models/geojson-ld.yaml#/Polygon
+      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/Polygon
     MultiPoint:
-      $ref: ./models/geojson-ld.yaml#/MultiPoint
+      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/MultiPoint
     MultiLineString:
-      $ref: ./models/geojson-ld.yaml#/MultiLineString
+      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/MultiLineString
     MultiPolygon:
-      $ref: ./models/geojson-ld.yaml#/MultiPolygon
+      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/MultiPolygon
+    
 
+    # Extend an existing model to create a new type with an attribute 
+    TemperatureSensor:
+      type: object
+      required:
+        -  temperature
+      allOf:
+        - $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/device.yaml#/Device
 
+      description: >
+        A device that consists of a sensor, has category `saref:Sensor` and is used for the purpose of sensing temperature`.
+      
+      properties:
+        temperature:
+          $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/saref-terms.yaml#/temperature
