@@ -78,12 +78,12 @@ location:
      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/Geometry/properties/type
     coordinates:
       oneOf:
-        - $ref: 'https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/Point/allOf/1'
-        - $ref: 'https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/LineString/allOf/1'
-        - $ref: 'https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/Polygon/allOf/1'
-        - $ref: 'https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/MultiPoint/allOf/1'
-        - $ref: 'https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/MultiLineString/allOf/1'
-        - $ref: 'https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/MultiPolygon/allOf/1'
+        - $ref: 'https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/Point/allOf/1/properties/coordinates'
+        - $ref: 'https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/LineString/allOf/1/properties/coordinates'
+        - $ref: 'https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/Polygon/allOf/1/properties/coordinates'
+        - $ref: 'https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/MultiPoint/allOf/1/properties/coordinates'
+        - $ref: 'https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/MultiLineString/allOf/1/properties/coordinates'
+        - $ref: 'https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/MultiPolygon/allOf/1/properties/coordinates'
 
 
 Common: 
