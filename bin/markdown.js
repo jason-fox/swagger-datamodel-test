@@ -13,7 +13,9 @@ function getModel(ngsi) {
 function getURL(url) {
   const str = url || '/';
   const split = str.split('/');
-  const name = split[split.length - 1];
+  let name = split[split.length - 1];
+
+  name = name.indexOf('#') ? name.substring(name.indexOf('#') + 1) : name;
 
   return url ? '[' + name + '](' + url + ')' : '';
 }

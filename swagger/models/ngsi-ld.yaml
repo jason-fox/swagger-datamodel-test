@@ -67,6 +67,7 @@ location:
     type: "GeoProperty"
     uri: "https://uri.etsi.org/ngsi-ld/location"
     uri-prefix: "https://uri.etsi.org/ngsi-ld/"
+    model: ["https://purl.org/geojson/vocab#Point", "https://purl.org/geojson/vocab#LineString", "https://purl.org/geojson/vocab#Polygon", "https://purl.org/geojson/vocab#MultiPoint", "https://purl.org/geojson/vocab#MultiLineString", "https://purl.org/geojson/vocab#MultiPolygon"]
   type: object
   required:
     - type
