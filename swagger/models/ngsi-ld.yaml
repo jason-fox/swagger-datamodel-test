@@ -70,19 +70,11 @@ location:
   type: object
   required:
     - type
+    - value
   externalDocs:
     url: http://geojson.org/geojson-spec.html#geometry-objects
   properties:
-    type:
-      type: string
-      enum:
-      - Point
-      - LineString
-      - Polygon
-      - MultiPoint
-      - MultiLineString
-      - MultiPolygon
-      description: the geometry type
+    $ref: ./geojson-ld.yaml#/Geometry/properties
 
 Common: 
   type: object

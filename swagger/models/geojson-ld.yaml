@@ -18,6 +18,15 @@ Geometry:
       - MultiLineString
       - MultiPolygon
       description: the geometry type
+    value:
+      oneOf:
+        - $ref: '#/Point'
+        - $ref: '#/LineString'
+        - $ref: '#/Polygon'
+        - $ref: '#/MultiPoint'
+        - $ref: '#/MultiLineString'
+        - $ref: '#/MultiPolygon'
+
 
 Point2D:
   type: array
