@@ -19,7 +19,6 @@ Geometry:
       - MultiPolygon
       description: the geometry type
 
-
 Point2D:
   type: array
   maxItems: 2

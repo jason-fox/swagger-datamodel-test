@@ -20,6 +20,8 @@ SupportedProtocol:
     - cat-m
     - 3g
     - grps
+
+
 Device:
   type: object
   required:
@@ -79,7 +81,7 @@ Device:
         See attribute `controlledProperty` from
         [DeviceModel](../../DeviceModel/doc/spec.md). Optional but
         recommended to optimize queries.
-    enum:
+      enum:
         $ref: ./saref-terms.yaml#/ControlledProperties/enum
 
     configuration:
