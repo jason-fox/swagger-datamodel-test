@@ -29,8 +29,10 @@ paths:
           description: NGSI-LD Linked-data Format
           content:
             application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Device'
               examples:
-                foo:
+                Device:
                   summary: Linked Data example
                   value:
                     - $ref: >-
@@ -51,6 +53,8 @@ paths:
           description: NGSI-v2 Format
           content:
             application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
               examples:
                 normalized:
                   summary: Normalized example

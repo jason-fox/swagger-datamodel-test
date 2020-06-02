@@ -23,8 +23,8 @@ paths:
           description: None
           content:
             application/json:
-              schema: 
-                type: object
+              schema:
+                $ref: '#/components/schemas/TemperatureSensor'
  
 
 components:

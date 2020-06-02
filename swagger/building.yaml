@@ -18,22 +18,6 @@ info:
         occur related to living, working, healing and so on.
     -   `BuildingOperation`: It captures automated operations that may be ongoing
         within a building.
-        
-        
-  x-description:
-    es: >
-    
-      # Construyendo modelos de datos
-
-      Este repositorio se archivará (enero de 2020) y los trabajos posteriores se llevarán a cabo
-      en los repositorios [Modelos de datos inteligentes] (https://github.com/smart-data-models).
-      Más preguntas sobre migración. alberto.abella@fiware.org
-
-      Esta carpeta contiene varios modelos de datos relacionados con el modelado de
-      Edificio y su gestión basada en
-      [GSMA] (https://www.gsma.com/iot/iot-big-data/) actividades. En comparación con GSMA
-      modelos, introdujimos algunos cambios y eliminamos el modelo `BuildingType`.
-    
   version: "1.0.0"
   title: "Building"
 
@@ -63,8 +47,10 @@ paths:
           description: "NGSI-LD Linked-data Format"
           content:
             application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Building'
               examples: 
-                foo:
+                Building:
                   summary: Linked Data example
                   value: 
                     - $ref : "https://raw.githubusercontent.com/smart-data-models/dataModel.Building/master/Building/example-normalized-ld.jsonld"
@@ -85,6 +71,8 @@ paths:
           description: "NGSI-v2 Format"
           content:
             application/json:
+              schema:
+                $ref: '#/components/schemas/Building'
               examples: 
                 normalized:
                   summary: Normalized example
