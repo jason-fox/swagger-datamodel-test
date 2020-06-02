@@ -2,63 +2,92 @@ openapi: 3.0.0
 info:
   description: ''
   version: 1.0.0
-  title: Harness
-
-tags: 
+  title: Building
+tags:
   - name: ngsi-ld
-    description: >
+    description: |
       NGSI-LD Linked-data Format
-  - name: ngsi-v2
-    description: >
-      NGSI-v2 Format
-  
-
-paths: 
-  /ngsi-ld:
+paths:
+  '/ngsi-ld/v1/entities/urn:ngsi-ld:Building:{entity-id}':
     get:
+      parameters: &entityId
+        - in: path
+          name: entity-id
+          schema:
+            type: string
+          required: true
+            
+      description: >-
+        Retrieve a building
       tags:
         - ngsi-ld
       responses:
-        '200':    # status code
-          description: None
+        '200':
+          description: OK
           content:
             application/json:
-              schema: 
-                type: object
- 
+              schema:
+                $ref: '#/components/schemas/Building'
+              
+        '400': &ErrorResponse
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
+  '/ngsi-ld/v1/entities/urn:ngsi-ld:Device:{entity-id}':
+    get:
+      parameters: *entityId
+      description: >-
+        Retrieve a set of IoT devices
+      tags:
+        - ngsi-ld
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+              
+        '400': *ErrorResponse
+
+  '/ngsi-ld/v1/entities/urn:ngsi-ld:TemperatureSensor:{entity-id}':
+    get:
+      parameters: *entityId
+      description: >-
+        Retrieve a TemperatureSensor
+      tags:
+        - ngsi-ld
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemperatureSensor'
+              
+        '400': *ErrorResponse
 
 components:
   schemas:
     # Use the Smart Data Models definition of a Building
     Building:
-      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/building.yaml#/Building
+      $ref: https://fiware.github.io/tutorials.NGSI-LD/models/building.yaml#/Building
     BuildingCategory:
-      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/building.yaml#/Categories
+      $ref: https://fiware.github.io/tutorials.NGSI-LD/models/building.yaml#/Categories
 
     # Use the Smart Data Models definition of a Device
     Device:
-      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/device.yaml#/Device
+      $ref: https://fiware.github.io/tutorials.NGSI-LD/models/device.yaml#/Device
     DeviceCategory:
-      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/saref-terms.yaml#/Categories
+      $ref: https://fiware.github.io/tutorials.NGSI-LD/models/saref-terms.yaml#/Categories
     ControlledProperties:
-      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/saref-terms.yaml#/ControlledProperties
+      $ref: https://fiware.github.io/tutorials.NGSI-LD/models/saref-terms.yaml#/ControlledProperties
     SupportedProtocol:
-      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/device.yaml#/SupportedProtocol
-
-    # Use the GeoJSON definitions for various Geographical type
-    Point:
-      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/Point
-    LineString:
-      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/LineString
-    Polygon:
-      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/Polygon
-    MultiPoint:
-      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/MultiPoint
-    MultiLineString:
-      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/MultiLineString
-    MultiPolygon:
-      $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/geojson-ld.yaml#/MultiPolygon
-    
+      $ref: https://fiware.github.io/tutorials.NGSI-LD/models/device.yaml#/SupportedProtocol
 
     # Extend an existing model to create a new type with an attribute 
     TemperatureSensor:
@@ -66,11 +95,16 @@ components:
       required:
         -  temperature
       allOf:
-        - $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/device.yaml#/Device
+        - $ref: https://fiware.github.io/tutorials.NGSI-LD/models/device.yaml#/Device
 
       description: >
         A device that consists of a sensor, has category `saref:Sensor` and is used for the purpose of sensing temperature`.
       
       properties:
         temperature:
-          $ref: https://jason-fox.github.io/swagger-datamodel-test/swagger/models/saref-terms.yaml#/temperature
+          $ref: https://fiware.github.io/tutorials.NGSI-LD/models/saref-terms.yaml#/temperature
+
+    Error:
+      $ref: >-
+        https://fiware.github.io/tutorials.NGSI-LD/models/ngsi-ld.yaml#/Error
+
