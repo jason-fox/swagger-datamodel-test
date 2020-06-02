@@ -30,7 +30,7 @@ paths:
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Device'
+                $ref: 'https://raw.githubusercontent.com/jason-fox/swagger-datamodel-test/master/swagger/device.yaml#/components/schemas/Device'
               examples:
                 Device:
                   summary: Linked Data example
@@ -54,7 +54,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Device'
+                $ref: 'https://raw.githubusercontent.com/jason-fox/swagger-datamodel-test/master/swagger/device.yaml#/components/schemas/Device'
               examples:
                 normalized:
                   summary: Normalized example
@@ -69,6 +69,6 @@ paths:
 components:
   schemas:
     SupportedProtocol:
-      $ref: "./models/device.yaml#/SupportedProtocol"
+      $ref: "https://raw.githubusercontent.com/jason-fox/swagger-datamodel-test/master/swagger/models/device.yaml#/SupportedProtocol"
     Device:
-      $ref: "./models/device.yaml#/Device"
+      $ref: "https://raw.githubusercontent.com/jason-fox/swagger-datamodel-test/master/swagger/models/device.yaml#/Device"

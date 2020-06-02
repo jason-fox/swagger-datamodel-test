@@ -1,35 +1,23 @@
-openapi: "3.0.0"
+openapi: 3.0.0
 info:
-  description: >
+  description: |
     # Building Data Models
-    
-    This repository is going to be archived (Jan-2020) and subsequent works will be carried out
-    in [Smart data models] (https://github.com/smart-data-models) repositories. Further questions 
-    on migration. alberto.abella@fiware.org
-    
-    This folders contains a number of data models related to the modelling of
-    Building and its management based on
-    [GSMA](https://www.gsma.com/iot/iot-big-data/) activities. Compared to GSMA
-    models, we introduced some changes and removed the `BuildingType` model.
-    
+    This repository is going to be archived (Jan-2020) and subsequent works will be carried out in [Smart data models] (https://github.com/smart-data-models) repositories. Further questions  on migration. alberto.abella@fiware.org
+    This folders contains a number of data models related to the modelling of Building and its management based on [GSMA](https://www.gsma.com/iot/iot-big-data/) activities. Compared to GSMA models, we introduced some changes and removed the `BuildingType` model.
     The following entity types are supported:
-    
     -   `Building`: A Building is a human build structure where different activities
         occur related to living, working, healing and so on.
     -   `BuildingOperation`: It captures automated operations that may be ongoing
         within a building.
-  version: "1.0.0"
-  title: "Building"
-
-tags: 
+  version: 1.0.0
+  title: Building
+tags:
   - name: ngsi-ld
-    description: >
+    description: |
       NGSI-LD Linked-data Format
   - name: ngsi-v2
-    description: >
+    description: |
       NGSI-v2 Format
-
-
 paths:
   /nsgi-ld:
     get:
@@ -40,21 +28,21 @@ paths:
           name: type
           schema:
             type: string
-            enum: [Building]
+            enum:
+              - Building
           required: true
       responses:
-        200:
-          description: "NGSI-LD Linked-data Format"
+        '200':
+          description: NGSI-LD Linked-data Format
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Building'
-              examples: 
+                $ref: 'https://raw.githubusercontent.com/jason-fox/swagger-datamodel-test/master/swagger/building.yaml#/components/schemas/Building'
+              examples:
                 Building:
                   summary: Linked Data example
-                  value: 
-                    - $ref : "https://raw.githubusercontent.com/smart-data-models/dataModel.Building/master/Building/example-normalized-ld.jsonld"
-
+                  value:
+                    - $ref: 'https://raw.githubusercontent.com/smart-data-models/dataModel.Building/master/Building/example-normalized-ld.jsonld'
   /nsgi-v2:
     get:
       tags:
@@ -64,29 +52,28 @@ paths:
           name: type
           schema:
             type: string
-            enum: [Building]
+            enum:
+              - Building
           required: true
       responses:
-        200:
-          description: "NGSI-v2 Format"
+        '200':
+          description: NGSI-v2 Format
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Building'
-              examples: 
+                $ref: 'https://raw.githubusercontent.com/jason-fox/swagger-datamodel-test/master/swagger/building.yaml#/components/schemas/Building'
+              examples:
                 normalized:
                   summary: Normalized example
-                  value: 
-                    - $ref: "https://raw.githubusercontent.com/smart-data-models/dataModel.Building/master/Building/example-normalized.json"
-                   
+                  value:
+                    - $ref: 'https://raw.githubusercontent.com/smart-data-models/dataModel.Building/master/Building/example-normalized.json'
                 keyvalues:
                   summary: Key-Values Pairs
-                  value: 
-                    - $ref: "https://raw.githubusercontent.com/smart-data-models/dataModel.Building/master/Building/example.json"
-                       
+                  value:
+                    - $ref: 'https://raw.githubusercontent.com/smart-data-models/dataModel.Building/master/Building/example.json'
 components:
   schemas:
     Categories:
-      $ref: "./models/building.yaml#/Categories"
+      $ref: 'https://raw.githubusercontent.com/jason-fox/swagger-datamodel-test/master/swagger/models/building.yaml#/Categories'
     Building:
-      $ref: "./models/building.yaml#/Building"
+      $ref: 'https://raw.githubusercontent.com/jason-fox/swagger-datamodel-test/master/swagger/models/building.yaml#/Building'

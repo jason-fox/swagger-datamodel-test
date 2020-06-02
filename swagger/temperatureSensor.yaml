@@ -24,7 +24,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TemperatureSensor'
+                $ref: 'https://raw.githubusercontent.com/jason-fox/swagger-datamodel-test/master/swagger/temperatureSensor.yaml#/components/schemas/TemperatureSensor'
  
 
 components:
@@ -34,11 +34,11 @@ components:
       required:
         -  temperature
       allOf:
-        - $ref: ./models/device.yaml#/Device
+        - $ref: https://raw.githubusercontent.com/jason-fox/swagger-datamodel-test/master/swagger/models/device.yaml#/Device
 
       description: >
         A device that consists of a sensor, has category `saref:Sensor` and is used for the purpose of sensing temperature`.
       
       properties:
         temperature:
-          $ref: ./models/saref-terms.yaml#/temperature
+          $ref: https://raw.githubusercontent.com/jason-fox/swagger-datamodel-test/master/swagger/models/saref-terms.yaml#/temperature
