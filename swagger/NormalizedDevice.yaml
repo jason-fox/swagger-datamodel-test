@@ -1,0 +1,235 @@
+openapi: 3.0.0
+info:
+  description: ''
+  version: 1.0.0
+  title: Device
+
+tags: 
+  - name: ngsi-ld
+    description: >
+      NGSI-LD Linked-data Format
+
+paths:
+  /nsgi-ld:
+    get:
+      tags:
+        - ngsi-ld
+      parameters:
+        - in: query
+          name: type
+          schema:
+            type: string
+            enum: [Device]
+          required: true
+      responses:
+        '200':
+          description: NGSI-LD Linked-data Format
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/DeviceNormalized'
+              examples:
+                Device:
+                  summary: Linked Data example
+                  value:
+                    - $ref: >-
+                        https://raw.githubusercontent.com/smart-data-models/dataModel.Device/master/Device/example-normalized-ld.jsonld
+
+components:
+  schemas:
+    DeviceNormalized:
+      type: object
+      required:
+        - '@context'
+        - id
+        - type
+        - address
+      properties:
+        '@context':
+          type: "array"
+          items:
+            type: string
+      
+        id:
+          type: "string"
+          description: >
+            URN holding the id of the attribute
+        type:
+          type: "string"
+          description: >
+            The entity type
+        
+        address:
+          required: &propertyRequired
+            - type
+            - value
+          properties:
+            type: &property
+              type: string
+              enum:
+                - Property
+            value:
+              type: object
+              properties:
+                allOf:
+                  $ref: https://raw.githubusercontent.com/jason-fox/swagger-datamodel-test/master/swagger/models/schema.org.yaml#/address     
+        
+        controlledAsset:
+          required: &relationshipRequired
+            - type
+            - object
+          properties: &relationship
+            type:
+              type: string
+              enum:
+                - Relationship
+            object:
+              type: "string"
+              format: "URL"
+          description: |
+            The asset(s) (building, object, etc.) controlled by the device.
+              
+        controlledProperty:
+          required: *propertyRequired
+          properties:
+            type: 
+              type: string
+              enum:
+                - Property
+            value:
+              type: "array"
+              items:
+                type: string
+                enum:
+                  - temperature
+                  - humidity
+                  - light
+                  - motion
+                  - fillingLevel
+                  - occupancy
+                  - power
+                  - pressure
+                  - smoke
+                  - energy
+                  - airPollution
+                  - noiseLevel
+                  - weatherConditions
+                  - precipitation
+                  - windSpeed
+                  - windDirection
+                  - atmosphericPressure
+                  - solarRadiation
+                  - depth
+                  - pH
+                  - conductivity
+                  - conductance
+                  - tss
+                  - tds
+                  - turbidity
+                  - salinity
+                  - orp
+                  - cdom
+                  - waterPollution
+                  - location
+                  - speed
+                  - heading
+                  - weight
+                  - waterConsumption
+                  - gasConsumption
+                  - electricityConsumption
+                  - soilMoisture
+                  - trafficFlow
+                  - eatingActivity
+                  - milking
+                  - movementActivity
+          description: >
+            See attribute `controlledProperty` from
+            [DeviceModel](../../DeviceModel/doc/spec.md). Optional but
+            recommended to optimize queries.
+
+        category:
+          description: >
+            See attribute `category` from
+            [DeviceModel](../../DeviceModel/doc/spec.md). Optional but
+            recommended to optimize queries.
+          required: *propertyRequired
+          properties:
+            type: *property
+            value:
+              type: "array"
+              items:
+                type: string
+                enum: 
+                  - sensor
+                  - actuator
+                  - meter
+                  - HVAC
+                  - network
+                  - multimedia
+                  - implement    
+                  - irrSystem
+                  - irrSection
+                  - endgun
+
+        batteryLevel:
+          required: *propertyRequired
+          properties:
+            type: *property
+            value:
+              type: number
+              format: float
+              
+            observedAt: &observedAt
+              type: string
+              format: "date-time"
+              description: >
+                A timestamp which denotes when the reading was taken
+                
+            unitCode: &unitCode
+              type: "string"
+              description: >
+                A string representing the measurement unit corresponding to the Property value. It shall be
+                encoded using the UN/CEFACT Common Codes for Units of Measurement
+
+            providedBy: &providedBy
+              required: *relationshipRequired
+              properties: *relationship
+              description: >
+                  The device that sent this reading
+
+          description: >
+            Device's battery level. It must be equal to `1.0` when battery is
+            full. `0.0` when battery ìs empty. `-1` when transiently cannot be
+            determined.
+    
+            -  Allowed values: Interval \[0,1\] and -1
+       
+       
+        location:
+          description: >
+            Location of the device.
+          required: *propertyRequired
+          properties:
+            type:
+              type: string
+              enum:
+                - GeoProperty
+            observedAt: *observedAt
+            providedBy: *providedBy
+            value:
+              type: object
+              properties:
+                allOf:
+                  $ref: https://raw.githubusercontent.com/jason-fox/swagger-datamodel-test/master/swagger/models/ngsi-ld.yaml#/location
+      
+        name:
+          description: |
+            A mnemonic name given to the device.
+          required: *propertyRequired
+          properties:
+            type: *property
+            value:
+              type: string
+
+          
+       
