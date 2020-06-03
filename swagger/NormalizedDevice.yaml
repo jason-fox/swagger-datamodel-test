@@ -39,11 +39,7 @@ components:
   schemas:
     DeviceNormalized:
       type: object
-      required:
-        - '@context'
-        - id
-        - type
-        - address
+      required: [ '@context', id, type, address ]
       properties:
         '@context':
           type: "array"
