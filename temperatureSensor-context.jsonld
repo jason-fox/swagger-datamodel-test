@@ -1,0 +1,174 @@
+{
+    "@context": {
+        "type": "@type",
+        "id": "@id",
+        "ngsi-ld": "https://uri.etsi.org/ngsi-ld/",
+        "fiware": "https://uri.fiware.org/ns/data-models#",
+        "schema": "https://schema.org/",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "TemperatureSensor": "fiware:TemperatureSensor",
+        "batteryLevel": {
+            "@id": "fiware:batteryLevel",
+            "@type": "xsd:number"
+        },
+        "category": {
+            "@id": "https://w3id.org/saref#category",
+            "@type": "xsd:string"
+        },
+        "configuration": {
+            "@id": "fiware:configuration",
+            "@type": "xsd:string"
+        },
+        "controlledAsset": {
+            "@id": "fiware:controlledAsset",
+            "@type": "@id"
+        },
+        "controlledProperty": {
+            "@id": "fiware:controlledProperty",
+            "@type": "@vocab"
+        },
+        "dataProvider": {
+            "@id": "fiware:dataProvider",
+            "@type": "xsd:string"
+        },
+        "dateFirstUsed": {
+            "@id": "fiware:dateFirstUsed",
+            "@type": "xsd:string"
+        },
+        "dateInstalled": {
+            "@id": "fiware:dateInstalled",
+            "@type": "xsd:string"
+        },
+        "dateLastCalibration": {
+            "@id": "fiware:dateLastCalibration",
+            "@type": "xsd:string"
+        },
+        "dateLastValueReported": {
+            "@id": "fiware:dateLastValueReported",
+            "@type": "xsd:string"
+        },
+        "dateManufactured": {
+            "@id": "fiware:dateManufactured",
+            "@type": "xsd:string"
+        },
+        "description": {
+            "@id": "ngsi-ld:description",
+            "@type": "xsd:string"
+        },
+        "deviceState": {
+            "@id": "fiware:deviceState",
+            "@type": "xsd:string"
+        },
+        "firmwareVersion": {
+            "@id": "fiware:firmwareVersion",
+            "@type": "xsd:string"
+        },
+        "hardwareVersion": {
+            "@id": "fiware:hardwareVersion",
+            "@type": "xsd:string"
+        },
+        "ipAddress": {
+            "@id": "fiware:ipAddress",
+            "@type": "xsd:string"
+        },
+        "location": "ngsi-ld:location",
+        "macAddress": {
+            "@id": "fiware:macAddress",
+            "@type": "xsd:string"
+        },
+        "mcc": {
+            "@id": "fiware:mcc",
+            "@type": "xsd:string"
+        },
+        "mnc": {
+            "@id": "fiware:mnc",
+            "@type": "xsd:string"
+        },
+        "name": {
+            "@id": "ngsi-ld:name",
+            "@type": "xsd:string"
+        },
+        "osVersion": {
+            "@id": "fiware:osVersion",
+            "@type": "xsd:string"
+        },
+        "owner": {
+            "@id": "fiware:owner",
+            "@type": "@id"
+        },
+        "provider": {
+            "@id": "fiware:provider",
+            "@type": "xsd:string"
+        },
+        "refDeviceModel": {
+            "@id": "fiware:refDeviceModel",
+            "@type": "@id"
+        },
+        "rssi": {
+            "@id": "fiware:rssi",
+            "@type": "xsd:string"
+        },
+        "serialNumber": {
+            "@id": "fiware:serialNumber",
+            "@type": "xsd:string"
+        },
+        "softwareVersion": {
+            "@id": "fiware:softwareVersion",
+            "@type": "xsd:string"
+        },
+        "source": {
+            "@id": "fiware:source",
+            "@type": "xsd:string"
+        },
+        "supportedProtocol": {
+            "@id": "fiware:supportedProtocol",
+            "@type": "@vocab"
+        },
+        "temperature": {
+            "@id": "https://w3id.org/saref#temperature",
+            "@type": "xsd:number"
+        },
+        "value": {
+            "@id": "fiware:value",
+            "@type": "xsd:string"
+        }
+    },
+    "@graph": [
+        {
+            "@id": "fiware:TemperatureSensor",
+            "@type": "rdfs:Class",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "A device that consists of a sensor, has category `saref:Sensor` and is used for the purpose of sensing temperature`."
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "TemperatureSensor"
+                }
+            ],
+            "rdfs:subClassOf": {
+                "@id": "schema:Thing"
+            }
+        },
+        {
+            "@id": "fiware:temperature",
+            "@type": "ngsi-ld:Property",
+            "rdfs:comment": [
+                {
+                    "@language": "en",
+                    "@value": "Property related to some measurements that are characterized by a certain value that is measured in a temperature unit (degree_Celsius, degree_Fahrenheit, or degree_kelvin)"
+                }
+            ],
+            "rdfs:label": [
+                {
+                    "@language": "en",
+                    "@value": "temperature"
+                }
+            ]
+        }
+    ]
+}

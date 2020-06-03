@@ -107,4 +107,8 @@ components:
     Error:
       $ref: >-
         https://fiware.github.io/tutorials.NGSI-LD/models/ngsi-ld.yaml#/Error
+    
+    Person:
+      $ref:  >-
+        ./models/schema.org.yaml#/Person
 

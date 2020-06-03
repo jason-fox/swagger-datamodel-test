@@ -13,81 +13,42 @@ Categories:
   x-ngsi:
     uri-prefix: 'https://w3id.org/saref#'
   enum:
-    - sensor:
-        x-ngsi:
-          uri: 'https://w3id.org/saref#Sensor'
-        description: >
-          A device that detects and responds to events or changes in the
-          physical environment such as light, motion, or temperature
-          changes.
-
-    - actuator:
-        x-ngsi:
-          uri: 'https://w3id.org/saref#Actuator'
-        description: |
-          A device responsible for moving or controlling a mechanism or
-          system. .
-    - meter:
-        x-ngsi:
-          uri: 'https://w3id.org/saref#Meter'
-        description: >
-          A device built to accurately detect and display a quantity in a
-          form readable by a human being. Partially defined by SAREF.
-    - HVAC:
-        x-ngsi:
-          uri: 'https://w3id.org/saref#HVAC'
-        description: >
-          Heating, Ventilation and Air Conditioning (HVAC) device that
-          provides indoor environmental comfort.
-          .
-    - network:
-        x-ngsi:
-          uri: 'https://w3id.org/saref#Network'
-        description: |
-          A device used to connect other devices in a network, such as hub,
-          switch or router in a LAN or Sensor network.
-
-    - multimedia:
-        x-ngsi:
-          uri: 'https://w3id.org/saref#Multimedia'
-        description: |
-          A device designed to display, store, record or play multimedia
-          content such as audio, images, animation, video.
-          
-    - implement:
-        x-ngsi:
-          uri: 'https://github.com/ADAPT/ADAPT/blob/develop/source/ADAPT/Equipment/ImplementConfiguration.cs'
-        description: >
-          A device used or needed in a given activity; tool, instrument,  utensil, etc.
-
-    - irrSystem:
-        x-ngsi:
-          uri: 'https://github.com/ADAPT/ADAPT/blob/develop/source/ADAPT/Equipment/IrrSystemConfiguration.cs'
-        description: >
-          A mobile or fixed irrigation system such as a center pivot,
-          linear, traveling gun, solid set, etc.
-
-    - irrSection:
-        x-ngsi:
-          uri: 'https://github.com/ADAPT/ADAPT/blob/develop/source/ADAPT/Equipment/IrrSectionConfiguration.cs'
-        description: >
-          A section of an IrrSystem. Different enough from a regular
-          section.
-          
-    - endgun:
-        x-ngsi:
-          uri: 'https://github.com/ADAPT/ADAPT/blob/develop/source/ADAPT/Equipment/EndgunConfiguration.cs'
-        description: >
-          A device attached to an irrigation system that projects water
-          beyond it
-
-
+    - sensor
+    - actuator
+    - meter
+    - HVAC
+    - network
+    - multimedia          
+    - implement
+    - irrSystem
+    - irrSection
+    - endgun
+  description: >
+        -   `sensor`:  A device that detects and responds to events or changes in the
+            physical environment such as light, motion, or temperature
+            changes.
+        -   `actuator`: A device responsible for moving or controlling a mechanism or
+            system. .
+        -  `meter`: A device built to accurately detect and display a quantity in a
+              form readable by a human being. Partially defined by SAREF.
+        -   `HVAC`:  Heating, Ventilation and Air Conditioning (HVAC) device that
+              provides indoor environmental comfort.
+        -   `network`: A device used to connect other devices in a network, such as hub,
+              switch or router in a LAN or Sensor network.
+        -   `multimedia`: A device designed to display, store, record or play multimedia
+              content such as audio, images, animation, video.
+        -   `implement`:  A device used or needed in a given activity; tool, instrument,  utensil, etc.
+        -   `irrSystem`: A mobile or fixed irrigation system such as a center pivot,
+              linear, traveling gun, solid set, etc.
+        -   `irrSection`: A section of an IrrSystem. Different enough from a regular
+              section.
+        -   `endgun`: A device attached to an irrigation system that projects water
+              beyond it
+    
 ControlledProperties:
   type: string
   x-ngsi:
     uri-prefix: 'https://w3id.org/saref#'
-  description: >
-        URN holding the id of the attribute
   enum:
     - temperature
     - humidity

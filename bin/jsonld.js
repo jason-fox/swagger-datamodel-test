@@ -130,6 +130,25 @@ function addContexts(ngsi, schemaProperties, text, expand, addKeys) {
       });
     }
 
+    if (value.allOf) {
+      value.allOf.forEach (elem => {
+        
+        if(elem.properties){
+          Object.keys(elem.properties).forEach(key => {
+            const innerValue = elem.properties[key];
+            const innerProp = innerValue['x-ngsi'] || {};
+            innerProp['uri-prefix'] = innerProp['uri-prefix'] || prop['uri-prefix'];
+            const uri = innerProp['uri-prefix'] + key;
+            const type = innerProp.type || 'Property';
+
+
+
+            addEntry(text, type, key, uri, innerValue, expand);
+          });
+        }
+      });
+    }
+
     if (!expand && prop.properties) {
       const metaData = prop.properties;
       Object.keys(metaData).forEach(key => {
