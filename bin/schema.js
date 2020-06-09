@@ -5,13 +5,13 @@ const $RefParser = require('@apidevtools/json-schema-ref-parser');
 
 const common = {
   address:
-    'https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/address',
+    'https://raw.githubusercontent.com/smart-data-models/data-models/master/schema.org.yaml#/address',
   description:
-    'https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/description',
+    'https://raw.githubusercontent.com/smart-data-models/data-models/master/ngsi-ld.yaml#/description',
   location:
-    'https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/location',
+    'https://raw.githubusercontent.com/smart-data-models/data-models/master/ngsi-ld.yaml#/location',
   name:
-    'https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/name'
+    'https://raw.githubusercontent.com/smart-data-models/data-models/master/ngsi-ld.yaml#/name'
 };
 
 function getModel(value, ngsi) {
@@ -37,7 +37,7 @@ function schemaToYaml(obj) {
     allOf: [
       {
         $ref:
-          'https://jason-fox.github.io/swagger-datamodel-test/common.yaml#/Common'
+          'https://raw.githubusercontent.com/smart-data-models/data-models/master/ngsi-ld.yaml#/Common'
       }
     ],
     type: obj.type,
