@@ -27,7 +27,7 @@ switch (command) {
   case 'yaml':
     reader.yaml(argv.file);
     break;
-  case 'schemaRead':
+  case 'schema':
     out = out + '.yaml';
     reader.schemaRead(argv.file, out);
     break;
@@ -36,8 +36,8 @@ switch (command) {
     reader.addLang(argv.file, out, argv.lang);
     break;
   case 'markdown':
-    out = out + '.' + argv.lang + '.md';
-    reader.markdown(argv.file, out, argv.lang);
+    out = out + '.' + (argv.lang  ? (argv.lang + '.'): '') + 'md';
+    reader.markdown(argv.file, out, argv.lang || 'en');
     break;
   case 'ngsi':
     out = out + '-ngsi.jsonld';

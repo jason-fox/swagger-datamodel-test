@@ -2,6 +2,7 @@ function addCommonContextURLs(context) {
   context['ngsi-ld'] = 'https://uri.etsi.org/ngsi-ld/';
   context.fiware = 'https://uri.fiware.org/ns/data-models#';
   context.schema = 'https://schema.org/';
+
 }
 
 function addCommonGraphURLs(context) {
@@ -92,6 +93,9 @@ function getContext(api, context, expand) {
   const unordered = JSON.parse(
     '{' + replaceCommonContextURLs(text.join(',\n  ') + '}')
   );
+
+  delete unordered.id;
+  delete unordered.type;
 
   Object.keys(unordered)
     .sort()
