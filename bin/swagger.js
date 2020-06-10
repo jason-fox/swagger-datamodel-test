@@ -11,6 +11,7 @@ const yargs = require('yargs')
   .command('ngsi', 'output NGSILD context')
   .command('jsonld', 'output JSONLD context with @graph')
   .command('markdown', 'output Markdown')
+  .command('payload', 'payload to YAML')
   .demandCommand(1, 'must provide a valid command')
   .demandOption(['i'])
   .alias('i', 'file')
@@ -31,12 +32,16 @@ switch (command) {
     out = out + '.yaml';
     reader.schemaRead(argv.file, out);
     break;
+  case 'payload':
+    out = out + '.yaml';
+    reader.payload(argv.file, out);
+    break;
   case 'addLang':
     out = out + '.' + argv.lang + path.parse(argv.file).ext;
     reader.addLang(argv.file, out, argv.lang);
     break;
   case 'markdown':
-    out = out + '.' + (argv.lang  ? (argv.lang + '.'): '') + 'md';
+    out = out + '.' + (argv.lang ? argv.lang + '.' : '') + 'md';
     reader.markdown(argv.file, out, argv.lang || 'en');
     break;
   case 'ngsi':

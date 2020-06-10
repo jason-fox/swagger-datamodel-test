@@ -72,7 +72,7 @@ function schemaToYaml(obj) {
             }
 
             if (value.type == 'array') {
-            	inner.items = value.items;
+              inner.items = value.items;
             }
 
             unordered[key] = inner;
@@ -100,4 +100,84 @@ function schemaToYaml(obj) {
   return yaml;
 }
 
+function y(value) {
+  let obj = {
+    'x-ngsi': { type: 'Property' },
+    description: ''
+  };
+
+  if (Array.isArray(value)) {
+    obj.type = 'array';
+    obj.items = {
+      type: 'object'
+    };
+
+    if (typeof value[0] === 'string' || value[0] instanceof String) {
+      obj.items.type = 'string';
+    }
+  } else if (Number.isInteger(value)) {
+    obj.type = 'integer';
+    obj.format = 'int32';
+    obj['x-ngsi'].model = 'http://schema.org/Integer';
+  } else if (!isNaN(Date.parse(value))) {
+    obj.type = 'string';
+    obj.format = 'date-time';
+    obj['x-ngsi'].model = 'http://schema.org/DateTime';
+  } else if (typeof value === 'string' || value instanceof String) {
+    obj.type = 'string';
+    obj['x-ngsi'].model = 'http://schema.org/Text';
+  } else {
+    obj.type = 'object';
+  }
+
+  return obj;
+}
+
+function payloadToYaml(obj) {
+  const unordered = [];
+
+  const obj2 = {
+    required: ['id', 'type'],
+    allOf: [
+      {
+        $ref:
+          'https://raw.githubusercontent.com/smart-data-models/data-models/master/ngsi-ld.yaml#/Common'
+      }
+    ],
+    type: 'object',
+    description: '',
+
+    properties: {}
+  };
+
+  Object.keys(obj).forEach(key => {
+    if (common[key]) {
+      unordered[key] = { $ref: common[key] };
+    } else {
+      unordered[key] = y(obj[key]);
+    }
+  });
+
+  const obj3 = {};
+
+  delete unordered.id;
+  delete unordered.type;
+  delete unordered.dateCreated;
+  delete unordered.dateModified;
+
+  Object.keys(unordered)
+    .sort()
+    .forEach(function(key) {
+      obj2.properties[key] = unordered[key];
+      obj2.required.push(key);
+    });
+
+  obj3['XXXX'] = obj2;
+
+  let yaml = YAML.stringify(obj3);
+  return yaml;
+}
+
 exports.schemaToYaml = schemaToYaml;
+
+exports.payloadToYaml = payloadToYaml;

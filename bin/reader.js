@@ -111,6 +111,17 @@ async function schemaRead(input, output) {
   });
 }
 
+async function payload(input, output) {
+  await fs.readFile(input, 'utf8', function(err, data) {
+    if (err) {
+      throw err;
+    }
+
+    let payload = JSON.parse(data);
+    fs.writeFileSync(output, Schema.payloadToYaml(payload));
+  });
+}
+
 async function x(obj, output) {
   try {
     let schema = await $RefParser.dereference(obj);
@@ -133,3 +144,4 @@ exports.schemaRead = schemaRead;
 exports.markdown = markdown;
 exports.jsonld = jsonld;
 exports.ngsi = ngsi;
+exports.payload = payload;
