@@ -50,7 +50,14 @@ datamodelgen addLang -i building.yaml -l en
 Generate YAML from schema
 
 ```console
-datamodelgen schemaRead -i schema.json -l en
+datamodelgen schema -i schema.json -l en
+```
+
+
+Generate YAML from payload
+
+```console
+datamodelgen payload -i payload.json -l en
 ```
 
 ## TO DO
