@@ -30,7 +30,7 @@ function getModel(value, ngsi) {
 
 function schemaToYaml(obj) {
   const id = path.parse(path.parse(obj.$id).dir).name;
-  const unordered = [];
+  const unordered = {};
 
   const obj2 = {
     required: obj.required,
@@ -49,6 +49,9 @@ function schemaToYaml(obj) {
   obj.allOf.forEach(function(element) {
     let properties = element.properties;
     if (properties) {
+
+
+      console.log(properties)
       Object.keys(properties).forEach(key => {
         if (common[key]) {
           unordered[key] = { $ref: common[key] };
@@ -75,7 +78,11 @@ function schemaToYaml(obj) {
               inner.items = value.items;
             }
 
-            unordered[key] = inner;
+            if (key !== 'length'){
+              unordered['' + key] = inner;
+            } else {
+              unordered.length = inner;
+            }
           }
         }
       });
@@ -95,6 +102,10 @@ function schemaToYaml(obj) {
 
   const obj3 = {};
   obj3[id] = obj2;
+
+
+  console.log(JSON.stringify(obj3, null, 4));
+
 
   let yaml = YAML.stringify(obj3);
   return yaml;
