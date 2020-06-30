@@ -5,13 +5,33 @@ const $RefParser = require('@apidevtools/json-schema-ref-parser');
 
 const common = {
   address:
-    'https://raw.githubusercontent.com/smart-data-models/data-models/master/schema.org.yaml#/address',
+    'https://smart-data-models.github.io/data-models/schema.org.yaml#/address',
+  annotations:
+    'https://smart-data-models.github.io/data-models/fiware-terms.yaml#/annotations',
+  alternateName:
+    'https://smart-data-models.github.io/data-models/schema.org.yaml#/alternateName',
+  areaServed:
+    'https://smart-data-models.github.io/data-models/schema.org.yaml#/areaServed',
+  color:
+    'https://smart-data-models.github.io/data-models/schema.org.yaml#/color',
+  dataProvider:
+    'https://smart-data-models.github.io/data-models/fiware-terms.yaml#/dataProvider',
   description:
-    'https://raw.githubusercontent.com/smart-data-models/data-models/master/ngsi-ld.yaml#/description',
+    'https://smart-data-models.github.io/data-models/ngsi-ld.yaml#/description',
+  image:
+    'https://smart-data-models.github.io/data-models/schema.org.yaml#/image',
   location:
-    'https://raw.githubusercontent.com/smart-data-models/data-models/master/ngsi-ld.yaml#/location',
+    'https://smart-data-models.github.io/data-models/ngsi-ld.yaml#/location',
   name:
-    'https://raw.githubusercontent.com/smart-data-models/data-models/master/ngsi-ld.yaml#/name'
+    'https://smart-data-models.github.io/data-models/ngsi-ld.yaml#/name',
+  openingHours:
+    'https://smart-data-models.github.io/data-models/schema.org.yaml#/openingHours',
+  owner:
+    'https://smart-data-models.github.io/data-models/fiware-terms.yaml#/owner',
+  refSeeAlso:
+    'https://smart-data-models.github.io/data-models/fiware-terms.yaml#/refSeeAlso',
+  source:  
+    'https://smart-data-models.github.io/data-models/fiware-terms.yaml#/source'
 };
 
 function getModel(value, ngsi) {
